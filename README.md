@@ -1,6 +1,10 @@
-# FfnApi
+# FantasyFootballNerd API
 
-**TODO: Add description**
+Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballnerd.com/fantasy-football-api)
+
+## Features
+
+Nothing to see here, yet. :)
 
 ## Installation
 
@@ -17,4 +21,3 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         def application do
           [applications: [:ffn_api]]
         end
-
