@@ -14,7 +14,7 @@ defmodule FfnApi.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [ :logger, :httpoison, :exjsx]]
+    [applications: [ :logger, :httpoison ]]
   end
 
   # Dependencies can be Hex packages:
@@ -27,8 +27,15 @@ defmodule FfnApi.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [ {:httpoison, "~> 0.8"},
+    [
+      {:credo, "~> 0.3", only: [:dev, :test]},
+      {:earmark, "~> 0.1", only: :dev},
+      {:ex_doc, "~> 0.11", only: :dev},
       {:exvcr, "~> 0.6", only: :test},
-      {:meck, "~> 0.8", only: :test} ]
+      {:httpoison, "~> 0.8"},
+      {:meck, "~> 0.8", only: :test},
+      {:mix_test_watch, "~> 0.2", only: :dev},
+      {:poison, "~> 2.0"},
+    ]
   end
 end
