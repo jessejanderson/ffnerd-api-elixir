@@ -1,0 +1,2 @@
+defmodule FfnApi do
+end
