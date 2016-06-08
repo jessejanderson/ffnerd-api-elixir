@@ -1,17 +1,20 @@
 defmodule FfnApi.Player do
   use HTTPoison.Base
+  import FfnApi.Utils
 
-  def get do
-    get {:Players, %FfnApi.Url{service: "players"}}
+  def list(client) do
+    FfnApi.get({:Players, %FfnApi.Url{service: "players"}}, client)
+    |> Enum.map(&convert_to_atom_map/1)
   end
 
-  def get({atom, %FfnApi.Url{} = url_struct}) do
-    json = url_struct |> FfnApi.build_url |> FfnApi.get!
-    json.body[atom]
+  def list(position, client) do
+    FfnApi.get({:Players, %FfnApi.Url{service: "players", path1: position}}, client)
+    |> Enum.map(&convert_to_atom_map/1)
   end
 
-  def get(id) do
-    get {:Player, %FfnApi.Url{service: "player", param1: id}}
+  def find(id, client) do
+    FfnApi.get({:Player, %FfnApi.Url{service: "player", path1: id}}, client)
+    |> convert_to_atom_map
   end
 
 end

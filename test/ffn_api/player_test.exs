@@ -1,16 +1,29 @@
 defmodule FfnApi.PlayerTest do
   use ExUnit.Case
-  alias FfnApi.Player
+  import FfnApi.Player
+
+  doctest FfnApi.Player
+
+  @client FfnApi.Client.new("test")
 
   setup_all do
-    FfnApi.start
+    HTTPoison.start
   end
 
-  test "Can get a list of players" do
-    assert [%{"playerId" => _} | _rest] = Player.get
+  test "can get list of players" do
+    assert [%{player_id: _} | _rest] = list(@client)
   end
 
-  test "can get a single player by id" do
-    assert %{"playerId" => "2"} = Player.get(2)
+  test "can get list of players by position" do
+    assert [%{player_id: _} | _rest] = list("QB", @client)
+  end
+
+  test "can get a player by id" do
+    assert %{player_id: "2"} = find(2, @client)
+  end
+
+  test "get display name from player" do
+    player = find(2, @client)
+    assert "Derek Anderson" = player.display_name
   end
 end

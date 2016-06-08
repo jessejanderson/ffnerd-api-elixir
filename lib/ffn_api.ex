@@ -5,8 +5,15 @@ defmodule FfnApi do
   @format "json"
   @api_key "test"
 
-  def build_url(%FfnApi.Url{service: service, format: _format, api_key: _api_key, param1: param1, param2: param2, param3: param3}) do
-    "#{service}/#{@format}/#{@api_key}/#{param1}/#{param2}/#{param3}"
+  def get({atom, %FfnApi.Url{} = url_struct}, %FfnApi.Client{auth: auth}) do
+    raw = %FfnApi.Url{url_struct | api_key: auth}
+    |> FfnApi.build_url
+    |> FfnApi.get!
+    raw.body[atom]
+  end
+
+  def build_url(%FfnApi.Url{service: service, format: _format, api_key: _api_key, path1: path1, path2: path2, path3: path3}) do
+    "#{service}/#{@format}/#{@api_key}/#{path1}/#{path2}/#{path3}"
     |> String.strip(?/)
   end
 

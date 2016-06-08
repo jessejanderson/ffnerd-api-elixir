@@ -4,8 +4,8 @@ defmodule FfnApi.Url do
     :service,
     :format,
     :api_key,
-    :param1,
-    :param2,
-    :param3
+    :path1,
+    :path2,
+    :path3
   ]
 end
