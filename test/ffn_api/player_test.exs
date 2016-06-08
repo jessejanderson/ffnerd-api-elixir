@@ -10,19 +10,19 @@ defmodule FfnApi.PlayerTest do
     HTTPoison.start
   end
 
-  test "can get list of players" do
+  test "get list of players" do
     assert [%{player_id: _} | _rest] = list(@client)
   end
 
-  test "can get list of players by position" do
+  test "get list of players by position" do
     assert [%{player_id: _} | _rest] = list("QB", @client)
   end
 
-  test "can get a player by id" do
+  test "get a player by id" do
     assert %{player_id: "2"} = find(2, @client)
   end
 
-  test "get display name from player" do
+  test "display name from player" do
     player = find(2, @client)
     assert "Derek Anderson" = player.display_name
   end

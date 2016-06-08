@@ -10,7 +10,7 @@ defmodule FfnApi.TeamTest do
     HTTPoison.start
   end
 
-  test "can get list of teams" do
+  test "get list of teams" do
     assert [%{code: "ARI"} | _rest] = list(@client)
   end
 end
