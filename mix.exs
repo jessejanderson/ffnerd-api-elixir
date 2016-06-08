@@ -1,8 +1,8 @@
-defmodule FfnApi.Mixfile do
+defmodule FFNerd.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :ffn_api,
+    [app: :ffnerd,
      version: "0.0.1",
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,

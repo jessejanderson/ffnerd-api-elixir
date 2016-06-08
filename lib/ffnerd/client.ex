@@ -1,4 +1,4 @@
-defmodule FfnApi.Client do
+defmodule FFNerd.Client do
   defstruct auth: nil, endpoint: "http://www.fantasyfootballnerd.com"
 
   def new(auth), do: %__MODULE__{auth: auth}

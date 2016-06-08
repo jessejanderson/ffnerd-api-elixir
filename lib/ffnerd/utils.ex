@@ -1,4 +1,4 @@
-defmodule FfnApi.Utils do
+defmodule FFNerd.Utils do
   def convert_to_atom_map(map) do
     for {key, val} <- map, into: %{}, do: {underscore_atom(key), val}
   end

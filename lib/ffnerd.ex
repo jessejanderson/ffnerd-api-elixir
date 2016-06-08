@@ -1,18 +1,18 @@
-defmodule FfnApi do
+defmodule FFNerd do
   use HTTPoison.Base
 
   # TODO: Get these values dynamically
   @format "json"
   @api_key "test"
 
-  def get({atom, %FfnApi.Url{} = url_struct}, %FfnApi.Client{auth: auth}) do
-    raw = %FfnApi.Url{url_struct | api_key: auth}
-    |> FfnApi.build_url
-    |> FfnApi.get!
+  def get({atom, %FFNerd.Url{} = url_struct}, %FFNerd.Client{auth: auth}) do
+    raw = %FFNerd.Url{url_struct | api_key: auth}
+    |> FFNerd.build_url
+    |> FFNerd.get!
     raw.body[atom]
   end
 
-  def build_url(%FfnApi.Url{service: service, format: _format, api_key: _api_key, path1: path1, path2: path2, path3: path3}) do
+  def build_url(%FFNerd.Url{service: service, format: _format, api_key: _api_key, path1: path1, path2: path2, path3: path3}) do
     "#{service}/#{@format}/#{@api_key}/#{path1}/#{path2}/#{path3}"
     |> String.strip(?/)
   end

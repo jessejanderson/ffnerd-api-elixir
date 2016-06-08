@@ -1,10 +1,10 @@
-defmodule FfnApi.TeamTest do
+defmodule FFNerd.TeamTest do
   use ExUnit.Case
-  import FfnApi.Team
+  import FFNerd.Team
 
-  doctest FfnApi.Team
+  doctest FFNerd.Team
 
-  @client FfnApi.Client.new("test")
+  @client FFNerd.Client.new("test")
 
   setup_all do
     HTTPoison.start

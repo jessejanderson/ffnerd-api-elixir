@@ -1,10 +1,10 @@
-defmodule FfnApi.ScheduleTest do
+defmodule FFNerd.ScheduleTest do
   use ExUnit.Case
-  import FfnApi.Schedule
+  import FFNerd.Schedule
 
-  doctest FfnApi.Schedule
+  doctest FFNerd.Schedule
 
-  @client FfnApi.Client.new("test")
+  @client FFNerd.Client.new("test")
 
   setup_all do
     HTTPoison.start

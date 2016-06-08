@@ -1,10 +1,10 @@
-defmodule FfnApi.PlayerTest do
+defmodule FFNerd.PlayerTest do
   use ExUnit.Case
-  import FfnApi.Player
+  import FFNerd.Player
 
-  doctest FfnApi.Player
+  doctest FFNerd.Player
 
-  @client FfnApi.Client.new("test")
+  @client FFNerd.Client.new("test")
 
   setup_all do
     HTTPoison.start

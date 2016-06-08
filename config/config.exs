@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :ffn_api, key: :value
+#     config :ffnerd, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:ffn_api, :key)
+#     Application.get_env(:ffnerd, :key)
 #
 # Or configure a 3rd-party app:
 #

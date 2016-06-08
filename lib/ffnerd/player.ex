@@ -1,4 +1,4 @@
-defmodule FfnApi.Player do
+defmodule FFNerd.Player do
   defstruct player_id: nil,
             star: nil,
             active: nil,
@@ -17,17 +17,17 @@ defmodule FfnApi.Player do
   use HTTPoison.Base
 
   def list(client) do
-    FfnApi.get({:Players, %FfnApi.Url{service: "players"}}, client)
+    FFNerd.get({:Players, %FFNerd.Url{service: "players"}}, client)
     |> Enum.map(&new/1)
   end
 
   def list(position, client) do
-    FfnApi.get({:Players, %FfnApi.Url{service: "players", path1: position}}, client)
+    FFNerd.get({:Players, %FFNerd.Url{service: "players", path1: position}}, client)
     |> Enum.map(&new/1)
   end
 
   def find(id, client) do
-    FfnApi.get({:Player, %FfnApi.Url{service: "player", path1: id}}, client)
+    FFNerd.get({:Player, %FFNerd.Url{service: "player", path1: id}}, client)
     |> new
   end
 end

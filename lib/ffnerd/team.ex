@@ -1,4 +1,4 @@
-defmodule FfnApi.Team do
+defmodule FFNerd.Team do
   @moduledoc """
   Returns a list of teams.
   """
@@ -9,7 +9,7 @@ defmodule FfnApi.Team do
   use HTTPoison.Base
 
   def list(client) do
-    FfnApi.get({:NFLTeams, %FfnApi.Url{service: "nfl-teams"}}, client)
+    FFNerd.get({:NFLTeams, %FFNerd.Url{service: "nfl-teams"}}, client)
     |> Enum.map(&new/1)
   end
 end

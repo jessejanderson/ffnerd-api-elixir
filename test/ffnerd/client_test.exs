@@ -1,8 +1,8 @@
-defmodule FfnApi.ClientTest do
+defmodule FFNerd.ClientTest do
   use ExUnit.Case
-  import FfnApi.Client
+  import FFNerd.Client
 
-  doctest FfnApi.Client
+  doctest FFNerd.Client
 
   test "default endpoint" do
     client = new("")

@@ -1,10 +1,10 @@
-defmodule FfnApi.GameTest do
+defmodule FFNerd.GameTest do
   use ExUnit.Case
-  import FfnApi.Game
+  import FFNerd.Game
 
-  doctest FfnApi.Game
+  doctest FFNerd.Game
 
-  @client FfnApi.Client.new("test")
+  @client FFNerd.Client.new("test")
 
   setup_all do
     HTTPoison.start
@@ -15,7 +15,7 @@ defmodule FfnApi.GameTest do
   end
 
   test "get a game by id" do
-    assert %FfnApi.Game{game_id: "2"} = find(2, @client)
+    assert %FFNerd.Game{game_id: "2"} = find(2, @client)
   end
 
   test "get tv station name from game" do

@@ -1,18 +1,18 @@
-defmodule FfnApi.Schedule do
-  alias FfnApi.Game
+defmodule FFNerd.Schedule do
+  alias FFNerd.Game
   use HTTPoison.Base
 
   def list(client) do
-    FfnApi.get({:Schedule, %FfnApi.Url{service: "schedule"}}, client)
+    FFNerd.get({:Schedule, %FFNerd.Url{service: "schedule"}}, client)
     |> Enum.map(&Game.new/1)
   end
 
   def list(position, client) do
-    FfnApi.get({:Schedule, %FfnApi.Url{service: "schedule", path1: position}}, client)
+    FFNerd.get({:Schedule, %FFNerd.Url{service: "schedule", path1: position}}, client)
     |> Enum.map(&Game.new/1)
   end
 
   def current_week(client) do
-    FfnApi.get({:currentWeek, %FfnApi.Url{service: "schedule"}}, client)
+    FFNerd.get({:currentWeek, %FFNerd.Url{service: "schedule"}}, client)
   end
 end

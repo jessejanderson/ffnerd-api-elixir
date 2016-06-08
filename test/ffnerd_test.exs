@@ -1,6 +1,6 @@
-defmodule FfnApiTest do
+defmodule FFNerdTest do
   use ExUnit.Case
-  doctest FfnApi
+  doctest FFNerd
 
   test "the truth" do
     assert 1 + 1 == 2

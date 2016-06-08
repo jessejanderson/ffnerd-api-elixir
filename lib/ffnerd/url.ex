@@ -1,4 +1,4 @@
-defmodule FfnApi.Url do
+defmodule FFNerd.Url do
   defstruct [
     :endpoint,
     :service,
