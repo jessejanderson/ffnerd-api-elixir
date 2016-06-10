@@ -31,8 +31,7 @@ defmodule FFNerd.Game do
   """
   def find(id, client) do
     FFNerd.get({:Schedule, %FFNerd.Url{service: "schedule"}}, client)
-    |> Enum.filter(fn(%{"gameId" => game_id}) -> game_id == "#{id}" end)
-    |> hd
+    |> Enum.find(fn(%{"gameId" => game_id}) -> game_id == "#{id}" end)
     |> new
   end
 end
