@@ -47,7 +47,7 @@ defmodule FFNerd.Player do
 
 
   @doc """
-  Find a player by their id
+  Find a player by id
 
   ## Examples
 
