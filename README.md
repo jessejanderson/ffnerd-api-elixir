@@ -10,7 +10,7 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
   - [X] NFL Teams
   - [X] NFL Schedule
   - [X] NFL Players
-  - [ ] Bye Weeks
+  - [X] Bye Weeks
   - [ ] Weather Forecasts
   - [ ] Auction Values
   - [ ] Draft Rankings
