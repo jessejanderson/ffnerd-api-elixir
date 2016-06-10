@@ -26,16 +26,34 @@ defmodule FFNerd.Player.Stats do
   use ExConstructor
   use HTTPoison.Base
 
+  @doc """
+  Find player stats by id
+
+  ## Examples
+
+    FFNerd.Player.Stats.find 2, client
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#player
+  """
   def find(id, client) do
     FFNerd.get({:Stats, %FFNerd.Url{service: "player", path1: id}}, client)
     |> Enum.map(fn{k, v} ->
          {k, Enum.map(v, fn{k2, v2} ->
            {k2, new(v2)}
-         end) |> Enum.into(%{})} 
+         end) |> Enum.into(%{})}
        end)
     |> Enum.into(%{})
   end
 
+  @doc """
+  Find player stats by id and year
+
+  ## Examples
+
+    FFNerd.Player.Stats.find 2, 2009, client
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#player
+  """
   def find(id, year, client) do
     FFNerd.get({:Stats, %FFNerd.Url{service: "player", path1: id}}, client)
     |> Map.get("#{year}")
@@ -43,6 +61,15 @@ defmodule FFNerd.Player.Stats do
     |> Enum.into(%{})
   end
 
+  @doc """
+  Find player stats by id, year, and week
+
+  ## Examples
+
+    FFNerd.Player.Stats.find 2, 2009, 17, client
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#player
+  """
   def find(id, year, week, client) do
     FFNerd.get({:Stats, %FFNerd.Url{service: "player", path1: id}}, client)
     |> Map.get("#{year}")

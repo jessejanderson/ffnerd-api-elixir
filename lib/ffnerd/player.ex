@@ -45,7 +45,6 @@ defmodule FFNerd.Player do
     |> Enum.map(&new/1)
   end
 
-
   @doc """
   Find a player by id
 

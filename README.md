@@ -5,7 +5,7 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
 ## To Do
 
 - [ ] Add module docs
-- [ ] Add function docs
+- [X] Add function docs
 - [ ] Implement API Services
   - [X] NFL Teams
   - [X] NFL Schedule
