@@ -1,5 +1,5 @@
 defmodule FFNerd.ScheduleTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   import FFNerd.Schedule
 
   doctest FFNerd.Schedule
@@ -10,11 +10,19 @@ defmodule FFNerd.ScheduleTest do
     HTTPoison.start
   end
 
-  test "get list of games" do
-    assert [%{game_id: "1"} | _rest] = list(@client)
+  test "Return the associated current week." do
+    assert 17 = current_week(@client)
   end
 
-  test "get the current week" do
-    assert 17 = current_week(@client)
+  test "Return a list of all game records." do
+    assert [%FFNerd.Game{} | _rest] = list(@client)
+  end
+
+  test "Return a list of game records by team code." do
+    assert [%FFNerd.Game{away_team: "SEA"} | _rest] = list("SEA", @client)
+  end
+
+  test "Return a single game record by game id." do
+    assert %FFNerd.Game{game_id: "1"} = find(1, @client)
   end
 end

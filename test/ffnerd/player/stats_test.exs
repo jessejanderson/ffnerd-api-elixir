@@ -1,5 +1,5 @@
 defmodule FFNerd.Player.StatsTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   import FFNerd.Player.Stats
 
   doctest FFNerd.Player.Stats

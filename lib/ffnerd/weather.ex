@@ -4,65 +4,20 @@ defmodule FFNerd.Weather do
   use HTTPoison.Base
 
   @doc """
-  List schedule
-
-  ## Examples
-
-    FFNerd.Schedule.list client
-
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
-  """
-  def list(client) do
-    FFNerd.get({:Games, %FFNerd.Url{service: "weather"}}, client)
-    |> Enum.map(fn{k, v} -> {k, new(v)} end)
-    |> Enum.into(%{})
-  end
-
-  @doc """
-  Find a weather forecast by game id
-
-  ## Examples
-
-    FFNerd.Weather.find 2, client
-
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#players
-  """
-  def find(id, client) when is_integer(id) do
-    list(client)
-    |> Enum.find(fn{_, v} -> v.game_id == "1" end)
-    |> elem(1)
-  end
-
-  @doc """
-  Find a weather forecast by short name
-
-  ## Examples
-
-    FFNerd.Weather.find "SEA", client
-
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#players
-  """
-  def find(team, client) do
-    FFNerd.get({:Games, %FFNerd.Url{service: "weather"}}, client)
-    |> Map.get("#{team}")
-    |> new
-  end
-
-  @doc """
-  List current date
+  Return the associated current date.
 
   ## Examples
 
     FFNerd.Schedule.today client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#weather
   """
   def today(client) do
     FFNerd.get({:Today, %FFNerd.Url{service: "weather"}}, client)
   end
 
   @doc """
-  List current week
+  Return the associated current week.
 
   ## Examples
 
@@ -72,5 +27,49 @@ defmodule FFNerd.Weather do
   """
   def week(client) do
     FFNerd.get({:Week, %FFNerd.Url{service: "weather"}}, client)
+  end
+
+  @doc """
+  Return a list of all weather forecast records.
+
+  ## Examples
+
+    FFNerd.Schedule.list client
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#weather
+  """
+  def list(client) do
+    FFNerd.get({:Games, %FFNerd.Url{service: "weather"}}, client)
+    |> Enum.map(fn{k, v} -> new(v) end)
+  end
+
+  @doc """
+  Return a single weather forecast record by game id.
+
+  ## Examples
+
+    FFNerd.Weather.find 2, client
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#weather
+  """
+  def find(id, client) when is_integer(id) do
+    list(client) |> Enum.find(&(&1.game_id == "#{id}"))
+  end
+
+  @doc """
+  Return a single weather forecast record by team code.
+
+  ## Examples
+
+    FFNerd.Weather.find "SEA", client
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#weather
+  """
+  def find(team, client) do
+    list(client)
+    |> Enum.find(fn(x) ->
+         x.home_team == "#{team}" ||
+         x.away_team == "#{team}"
+       end)
   end
 end

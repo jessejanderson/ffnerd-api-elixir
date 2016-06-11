@@ -11,7 +11,7 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
   - [X] NFL Schedule
   - [X] NFL Players
   - [X] Bye Weeks
-  - [ ] Weather Forecasts
+  - [X] Weather Forecasts
   - [ ] Auction Values
   - [ ] Draft Rankings
   - [ ] Draft Projections
@@ -119,7 +119,7 @@ schedule = FFNerd.Player.list("QB", client)
 # [%FFNerd.Player{position: "QB", ...}, ...]
 ```
 
-Return a single player record by id.
+Return a single player record by player id.
 ```elixir
 player = FFNerd.Player.find(1, client)
 # %FFNerd.Player{...}

@@ -6,11 +6,13 @@ defmodule FFNerd do
   @api_key "test"
 
   def get({atom, %FFNerd.Url{} = url_struct}, %FFNerd.Client{auth: auth}) do
-    raw = %FFNerd.Url{url_struct | api_key: auth}
+    %FFNerd.Url{url_struct | api_key: auth}
     |> FFNerd.build_url
     |> FFNerd.get!
-    raw.body[atom]
+    |> do_get(atom)
   end
+  defp do_get(raw, :none), do: raw.body
+  defp do_get(raw, atom), do: raw.body[atom]
 
   def build_url(%FFNerd.Url{service: service, format: _format, api_key: _api_key, path1: path1, path2: path2, path3: path3}) do
     "#{service}/#{@format}/#{@api_key}/#{path1}/#{path2}/#{path3}"

@@ -18,7 +18,7 @@ defmodule FFNerd.Player do
   alias FFNerd.Client
 
   @doc """
-  List players
+  Return a list of all player records.
 
   ## Examples
 
@@ -32,7 +32,7 @@ defmodule FFNerd.Player do
   end
 
   @doc """
-  List players of a specified position
+  Return a list of player records by position code.
 
   ## Examples
 
@@ -46,7 +46,7 @@ defmodule FFNerd.Player do
   end
 
   @doc """
-  Find a player by id
+  Return a single player record by player id.
 
   ## Examples
 

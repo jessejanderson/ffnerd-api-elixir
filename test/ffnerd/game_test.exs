@@ -1,5 +1,5 @@
 defmodule FFNerd.GameTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   import FFNerd.Game
 
   doctest FFNerd.Game
