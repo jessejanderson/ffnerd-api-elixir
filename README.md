@@ -41,8 +41,6 @@ Sign up for a FantasyFootballNerd.com account.
 API Resources
 =============
 
-**THE FOLLOWING IS A DESIRED FEATURE LIST, NOT CURRENTLY WORKING**
-
 All resources require a client with an API key
 which can be created with `FFNerd.Client.new("API-KEY")`.
 Documentation below assumes the `client` variable
@@ -51,7 +49,7 @@ is a valid `%FFNerd.Client{}` struct.
 All modules use `.find` functions to find an individual struct,
 and `.list` functions to find a list of structs.
 Structs have atom keys
-and can utlize dot syntax for easily calling data.
+and can utilize dot syntax for easily calling data (examples below).
 
 ### Teams
 
