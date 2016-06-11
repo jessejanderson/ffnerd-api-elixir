@@ -4,7 +4,7 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
 
 ## To Do
 
-- [ ] Add module docs
+- [X] Add module docs
 - [X] Add function docs
 - [ ] Implement API Services
   - [X] NFL Teams
@@ -26,11 +26,12 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
   - [X] Player Stats & Info
     - [ ] Videos
   - [ ] Daily Fantasy Football
+- [ ] Check fail states for API Access levels
 - [ ] Update Readme with setup instructions
-- [ ] Update Readme with feature/usage instructions
+- [X] Update Readme with feature/usage instructions
 - [ ] Setup and trial using as a hex package
 - [ ] Add "Thanks" links to FFN Ruby Gem and Tentacat
-- [ ] Add "Examples of use" such as finding which teams are on a bye week, piping the team shortcode to get other information such as players, weather conditions, etc based on the team shortcode.
+- [ ] Add additional "Examples of use" such as finding which teams are on a bye week, piping the team shortcode to get other information such as players, weather conditions, etc based on the team shortcode.
 
 ## Setup
 
