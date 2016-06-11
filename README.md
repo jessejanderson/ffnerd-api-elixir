@@ -4,8 +4,6 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
 
 ## To Do
 
-- [X] Add module docs
-- [X] Add function docs
 - [ ] Implement API Services
   - [X] NFL Teams
   - [X] NFL Schedule
@@ -28,9 +26,7 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
   - [ ] Daily Fantasy Football
 - [ ] Check fail states for API Access levels
 - [ ] Update Readme with setup instructions
-- [X] Update Readme with feature/usage instructions
 - [ ] Setup and trial using as a hex package
-- [ ] Add "Thanks" links to FFN Ruby Gem and Tentacat
 - [ ] Add additional "Examples of use" such as finding which teams are on a bye week, piping the team shortcode to get other information such as players, weather conditions, etc based on the team shortcode.
 
 ## Setup
@@ -228,3 +224,11 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         def application do
           [applications: [:ffnerd]]
         end
+
+## Thanks
+
+Thanks to these 2 projects for being sources of inspiration for creating my own FFN API wrapper in Elixir:
+
+[Fantasy Football Nerd API Ruby Gem](https://github.com/GregBaugues/fantasy_football_nerd/)
+
+[Tentacat - Elixir Wrapper for Github API](https://github.com/edgurgel/tentacat)
