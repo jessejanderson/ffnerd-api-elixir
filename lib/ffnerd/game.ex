@@ -1,36 +1,34 @@
 defmodule FFNerd.Game do
-  defstruct game_id: nil,
-            game_week: nil,
-            game_date: nil,
-            away_team: nil,
-            home_team: nil,
-            game_time_et: nil,
-            tv_station: nil
+  defstruct [:game_id, :game_week, :game_date, :away_team, :home_team, :game_time_et, :tv_station]
   use ExConstructor
-  use HTTPoison.Base
+
+  @moduledoc """
+  Provides functions to work with Fantasy Football Nerd's NFL Schedule resources.
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
+  """
 
   @doc """
-  List games
+  Return a list of all game records.
 
   ## Examples
 
     FFNerd.Game.list client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
   """
   def list(client), do: FFNerd.Schedule.list(client)
 
   @doc """
-  Find a game by id
+  Return a single game record by game id.
 
   ## Examples
 
     FFNerd.Game.find 2, client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
   """
   def find(id, client) do
-    FFNerd.get({:Schedule, %FFNerd.Url{service: "schedule"}}, client)
+    {:Schedule, %FFNerd.URL{service: "schedule"}}
+    |> FFNerd.get(client)
     |> Enum.find(fn(%{"gameId" => game_id}) -> game_id == "#{id}" end)
     |> new
   end

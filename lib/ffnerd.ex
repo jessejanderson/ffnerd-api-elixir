@@ -5,8 +5,8 @@ defmodule FFNerd do
   @format "json"
   @api_key "test"
 
-  def get({atom, %FFNerd.Url{} = url_struct}, %FFNerd.Client{auth: auth}) do
-    %FFNerd.Url{url_struct | api_key: auth}
+  def get({atom, %FFNerd.URL{} = url_struct}, %FFNerd.Client{auth: auth}) do
+    %FFNerd.URL{url_struct | api_key: auth}
     |> FFNerd.build_url
     |> FFNerd.get!
     |> do_get(atom)
@@ -14,7 +14,7 @@ defmodule FFNerd do
   defp do_get(raw, :none), do: raw.body
   defp do_get(raw, atom), do: raw.body[atom]
 
-  def build_url(%FFNerd.Url{service: service, format: _format, api_key: _api_key, path1: path1, path2: path2, path3: path3}) do
+  def build_url(%FFNerd.URL{service: service, format: _format, api_key: _api_key, path1: path1, path2: path2, path3: path3}) do
     "#{service}/#{@format}/#{@api_key}/#{path1}/#{path2}/#{path3}"
     |> String.strip(?/)
   end

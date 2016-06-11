@@ -1,30 +1,12 @@
 defmodule FFNerd.Player.Stats do
-  defstruct avg_pass_yards: nil,
-            completions: nil,
-            final_score: nil,
-            fumble: nil,
-            fumble_lost: nil,
-            game_date: nil,
-            game_played: nil,
-            game_started: nil,
-            interceptions: nil,
-            opponent: nil,
-            pass_attempts: nil,
-            pass_td: nil,
-            pass_yards: nil,
-            percentage: nil,
-            player_id: nil,
-            qb_rating: nil,
-            rush_attempts: nil,
-            rush_avg: nil,
-            rush_td: nil,
-            rush_yards: nil,
-            sacks: nil,
-            sack_yards: nil,
-            week: nil,
-            year: nil
+  defstruct [:avg_pass_yards, :completions, :final_score, :fumble, :fumble_lost, :game_date, :game_played, :game_started, :interceptions, :opponent, :pass_attempts, :pass_td, :pass_yards, :percentage, :player_id, :qb_rating, :rush_attempts, :rush_avg, :rush_td, :rush_yards, :sacks, :sack_yards, :week, :year]
   use ExConstructor
-  use HTTPoison.Base
+
+  @moduledoc """
+  Provides functions to work with Fantasy Football Nerd's Player Stats resources.
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#player
+  """
 
   @doc """
   Find player stats by id
@@ -33,10 +15,10 @@ defmodule FFNerd.Player.Stats do
 
     FFNerd.Player.Stats.find 2, client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#player
   """
   def find(id, client) do
-    FFNerd.get({:Stats, %FFNerd.Url{service: "player", path1: id}}, client)
+    {:Stats, %FFNerd.URL{service: "player", path1: id}}
+    |> FFNerd.get(client)
     |> Enum.map(fn{k, v} ->
          {k, Enum.map(v, fn{k2, v2} ->
            {k2, new(v2)}
@@ -52,10 +34,10 @@ defmodule FFNerd.Player.Stats do
 
     FFNerd.Player.Stats.find 2, 2009, client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#player
   """
   def find(id, year, client) do
-    FFNerd.get({:Stats, %FFNerd.Url{service: "player", path1: id}}, client)
+    {:Stats, %FFNerd.URL{service: "player", path1: id}}
+    |> FFNerd.get(client)
     |> Map.get("#{year}")
     |> Enum.map(fn{k, v} -> {k, new(v)} end)
     |> Enum.into(%{})
@@ -68,10 +50,10 @@ defmodule FFNerd.Player.Stats do
 
     FFNerd.Player.Stats.find 2, 2009, 17, client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#player
   """
   def find(id, year, week, client) do
-    FFNerd.get({:Stats, %FFNerd.Url{service: "player", path1: id}}, client)
+    {:Stats, %FFNerd.URL{service: "player", path1: id}}
+    |> FFNerd.get(client)
     |> Map.get("#{year}")
     |> Map.get("#{week}")
     |> new

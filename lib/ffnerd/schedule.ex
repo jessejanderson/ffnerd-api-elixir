@@ -1,6 +1,11 @@
 defmodule FFNerd.Schedule do
   alias FFNerd.Game
-  use HTTPoison.Base
+
+  @moduledoc """
+  Provides functions to work with Fantasy Football Nerd's NFL Schedule resources.
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
+  """
 
   @doc """
   Return the associated current week.
@@ -9,10 +14,9 @@ defmodule FFNerd.Schedule do
 
     FFNerd.Schedule.current_week client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
   """
   def current_week(client) do
-    FFNerd.get({:currentWeek, %FFNerd.Url{service: "schedule"}}, client)
+    FFNerd.get({:currentWeek, %FFNerd.URL{service: "schedule"}}, client)
   end
 
   @doc """
@@ -22,24 +26,24 @@ defmodule FFNerd.Schedule do
 
     FFNerd.Schedule.list client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
   """
   def list(client) do
-    FFNerd.get({:Schedule, %FFNerd.Url{service: "schedule"}}, client)
+    {:Schedule, %FFNerd.URL{service: "schedule"}}
+    |> FFNerd.get(client)
     |> Enum.map(&Game.new/1)
   end
 
   @doc """
-  Return a list of game records by team code.
+  Return a list of game records by team code.
 
   ## Examples
 
     FFNerd.Schedule.list client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
   """
   def list(team, client) do
-    list(client)
+    client
+    |> list
     |> Enum.filter(fn(x) ->
          x.home_team == "#{team}" ||
          x.away_team == "#{team}"
@@ -47,15 +51,14 @@ defmodule FFNerd.Schedule do
   end
 
   @doc """
-  Return a single game record by game id.
+  Return a single game record by game id.
 
   ## Examples
 
     FFNerd.Schedule.list client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#schedule
   """
   def find(id, client) do
-    list(client) |> Enum.find(&(&1.game_id == "#{id}"))
+    client |> list |> Enum.find(&(&1.game_id == "#{id}"))
   end
 end

@@ -1,9 +1,12 @@
 defmodule FFNerd.ByeWeek do
-  defstruct bye_week: nil,
-            display_name: nil,
-            team: nil
+  defstruct [:bye_week, :display_name, :team]
   use ExConstructor
-  use HTTPoison.Base
+
+  @moduledoc """
+  Provides functions to work with Fantasy Football Nerd's Bye Week resources.
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#byes
+  """
 
   @doc """
   Return a list of all bye week records.
@@ -12,10 +15,10 @@ defmodule FFNerd.ByeWeek do
 
     FFNerd.ByeWeek.list 4, client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#byes
   """
   def list(client) do
-    FFNerd.get({:none, %FFNerd.Url{service: "byes"}}, client)
+    {:none, %FFNerd.URL{service: "byes"}}
+    |> FFNerd.get(client)
     |> Stream.flat_map(fn{_, v} -> v end)
     |> Enum.map(&new/1)
   end
@@ -27,10 +30,9 @@ defmodule FFNerd.ByeWeek do
 
     FFNerd.ByeWeek.list 4, client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#byes
   """
   def list(id, client) do
-    list(client) |> Enum.filter(&(&1.bye_week == "#{id}"))
+    client |> list |> Enum.filter(&(&1.bye_week == "#{id}"))
   end
 
   @doc """
@@ -40,9 +42,8 @@ defmodule FFNerd.ByeWeek do
 
     FFNerd.ByeWeek.find "SEA", client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#byes
   """
   def find(team, client) do
-    list(client) |> Enum.find(&(&1.team == team))
+    client |> list |> Enum.find(&(&1.team == team))
   end
 end

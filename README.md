@@ -113,7 +113,7 @@ players = FFNerd.Player.list(client)
 
 Return a list of player records by position code.
 ```elixir
-schedule = FFNerd.Player.list("QB", client)
+players = FFNerd.Player.list("QB", client)
 # [%FFNerd.Player{position: "QB", ...}, ...]
 ```
 

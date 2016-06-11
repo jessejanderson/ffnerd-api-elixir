@@ -1,12 +1,12 @@
 defmodule FFNerd.Team do
-  @moduledoc """
-  Returns a list of teams.
-  """
-  defstruct code: nil,
-            full_name: nil,
-            short_name: nil
+  defstruct [:code, :full_name, :short_name]
   use ExConstructor
-  use HTTPoison.Base
+
+  @moduledoc """
+  Provides functions to work with Fantasy Football Nerd's Bye Week resources.
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#teams
+  """
 
   @doc """
   Return a list of all team records.
@@ -15,10 +15,10 @@ defmodule FFNerd.Team do
 
     FFNerd.Team.list client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#teams
   """
   def list(client) do
-    FFNerd.get({:NFLTeams, %FFNerd.Url{service: "nfl-teams"}}, client)
+    {:NFLTeams, %FFNerd.URL{service: "nfl-teams"}}
+    |> FFNerd.get(client)
     |> Enum.map(&new/1)
   end
 
@@ -29,10 +29,10 @@ defmodule FFNerd.Team do
 
     FFNerd.Team.find "SEA", client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#teams
   """
   def find(team, client) do
-    FFNerd.get({:NFLTeams, %FFNerd.Url{service: "nfl-teams"}}, client)
+    {:NFLTeams, %FFNerd.URL{service: "nfl-teams"}}
+    |> FFNerd.get(client)
     |> Stream.map(&new/1)
     |> Enum.find(&(&1.code == team))
   end

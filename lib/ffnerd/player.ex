@@ -1,21 +1,12 @@
 defmodule FFNerd.Player do
-  defstruct player_id: nil,
-            star: nil,
-            active: nil,
-            jersey: nil,
-            fname: nil,
-            lname: nil,
-            display_name: nil,
-            team: nil,
-            position: nil,
-            height: nil,
-            weight: nil,
-            dob: nil,
-            college: nil,
-            twitter_id: nil
+  defstruct [:player_id, :star, :active, :jersey, :fname, :lname, :display_name, :team, :position, :height, :weight, :dob, :college, :twitter_id]
   use ExConstructor
-  use HTTPoison.Base
-  alias FFNerd.Client
+
+  @moduledoc """
+  Provides functions to work with Fantasy Football Nerd's Players resources.
+
+  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#players
+  """
 
   @doc """
   Return a list of all player records.
@@ -24,10 +15,10 @@ defmodule FFNerd.Player do
 
     FFNerd.Player.list client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#players
   """
   def list(client) do
-    FFNerd.get({:Players, %FFNerd.Url{service: "players"}}, client)
+    {:Players, %FFNerd.URL{service: "players"}}
+    |> FFNerd.get(client)
     |> Enum.map(&new/1)
   end
 
@@ -38,10 +29,10 @@ defmodule FFNerd.Player do
 
     FFNerd.Player.list "QB", client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#players
   """
   def list(position, client) do
-    FFNerd.get({:Players, %FFNerd.Url{service: "players", path1: position}}, client)
+    {:Players, %FFNerd.URL{service: "players", path1: position}}
+    |> FFNerd.get(client)
     |> Enum.map(&new/1)
   end
 
@@ -52,10 +43,8 @@ defmodule FFNerd.Player do
 
     FFNerd.Player.find 2, client
 
-  More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#players
   """
   def find(id, client) do
-    FFNerd.get({:Player, %FFNerd.Url{service: "player", path1: id}}, client)
-    |> new
+    client |> list |> Enum.find(&(&1.player_id == "#{id}"))
   end
 end
