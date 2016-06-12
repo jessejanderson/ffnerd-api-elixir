@@ -1,8 +1,8 @@
-defmodule FFNerd.Player.AuctionValuesTest do
+defmodule FFNerd.Player.AuctionValueTest do
   use ExUnit.Case, async: true
-  import FFNerd.Player.AuctionValues
+  import FFNerd.Player.AuctionValue
 
-  doctest FFNerd.Player.AuctionValues
+  doctest FFNerd.Player.AuctionValue
 
   @client FFNerd.Client.new("test")
 
@@ -11,15 +11,15 @@ defmodule FFNerd.Player.AuctionValuesTest do
   end
 
   test "Return a list of all auction value records." do
-    assert [%FFNerd.Player.AuctionValues{} | _rest] = list(@client)
+    assert [%FFNerd.Player.AuctionValue{} | _rest] = list(@client)
   end
 
     test "Return a list of all auction value records by position." do
-    assert [%FFNerd.Player.AuctionValues{position: "QB"} | _rest] = list("QB", @client)
+    assert [%FFNerd.Player.AuctionValue{position: "QB"} | _rest] = list("QB", @client)
   end
 
   test "Return a single auction value record by person id." do
-    assert %FFNerd.Player.AuctionValues{} = find(259, @client)
+    assert %FFNerd.Player.AuctionValue{} = find(259, @client)
   end
 
   test "Return the avg price from an auction value record." do
@@ -30,14 +30,14 @@ defmodule FFNerd.Player.AuctionValuesTest do
   # Test account does not work with PPR tests
 
   # test "Return a list of all ppr auction value records." do
-  #   assert [%FFNerd.Player.AuctionValues{ppr: "1"} | _rest] = list(:ppr, @client)
+  #   assert [%FFNerd.Player.AuctionValue{ppr: "1"} | _rest] = list(:ppr, @client)
   # end
 
   # test "Return a list of all ppr auction value records by position." do
-  #   assert [%FFNerd.Player.AuctionValues{position: "QB", ppr: "1"} | _rest] = list(:ppr, "QB", @client)
+  #   assert [%FFNerd.Player.AuctionValue{position: "QB", ppr: "1"} | _rest] = list(:ppr, "QB", @client)
   # end
 
   # test "Return a single ppr auction value record by person id." do
-  #   assert %FFNerd.Player.AuctionValues{ppr: "1"} = find(:ppr, 259, @client)
+  #   assert %FFNerd.Player.AuctionValue{ppr: "1"} = find(:ppr, 259, @client)
   # end
 end

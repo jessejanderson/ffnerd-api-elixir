@@ -1,4 +1,4 @@
-defmodule FFNerd.Player.AuctionValues do
+defmodule FFNerd.Player.AuctionValue do
   defstruct [:avg_price, :display_name, :max_price, :min_price, :player_id, :position, :ppr, :team]
   use ExConstructor
 
@@ -13,9 +13,9 @@ defmodule FFNerd.Player.AuctionValues do
 
   ## Examples
 
-    FFNerd.Player.AuctionValues.list client
+    FFNerd.Player.AuctionValue.list client
 
-    FFNerd.Player.AuctionValues.list :ppr, client
+    FFNerd.Player.AuctionValue.list :ppr, client
 
   """
   def list(client) do
@@ -35,9 +35,9 @@ defmodule FFNerd.Player.AuctionValues do
 
   ## Examples
 
-    FFNerd.Player.AuctionValues.list "QB", client
+    FFNerd.Player.AuctionValue.list "QB", client
 
-    FFNerd.Player.AuctionValues.list :ppr, "QB", client
+    FFNerd.Player.AuctionValue.list :ppr, "QB", client
 
   """
   def list(position, client) do
@@ -53,9 +53,9 @@ defmodule FFNerd.Player.AuctionValues do
 
   ## Examples
 
-    FFNerd.Player.AuctionValues.find 259, client
+    FFNerd.Player.AuctionValue.find 259, client
 
-    FFNerd.Player.AuctionValues.find :ppr, 259, client
+    FFNerd.Player.AuctionValue.find :ppr, 259, client
 
   """
   def find(id, client) do
