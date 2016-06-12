@@ -215,10 +215,9 @@ Return a list of all auction value records.
 ```elixir
 FFNerd.Player.AuctionValue.list(client)
 # [%FFNerd.Player.AuctionValue{...}, ...]
-```
 
-Return a list of all ppr auction value records.
-```elixir
+# PPR
+
 FFNerd.Player.AuctionValue.list(:ppr, client)
 # [%FFNerd.Player.AuctionValue{ppr: "1", ...}, ...]
 ```
@@ -227,10 +226,9 @@ Return a list of all auction value records by position.
 ```elixir
 FFNerd.Player.AuctionValue.list("QB", client)
 # [%FFNerd.Player.AuctionValue{position: "QB", ...}, ...]
-```
 
-Return a list of all ppr auction value records by position.
-```elixir
+# PPR
+
 FFNerd.Player.AuctionValue.list(:ppr, "QB", client)
 # [%FFNerd.Player.AuctionValue{ppr: "1", position: "QB", ...}, ...]
 ```
@@ -248,14 +246,60 @@ auction_values.player_id     # "1446"
 auction_values.position      # "wr"
 auction_values.ppr           # "0"
 auction_values.team          # "atl"
-```
 
-Return a single ppr auction value record by person id.
-```elixir
+# PPR
+
 auction_values = FFNerd.Player.AuctionValue.find(:ppr, 1446, client)
 # [%FFNerd.Player.AuctionValue{ppr: "1", player_id: "1446", ...}, ...]
 
 auction_values.ppr           # "1"
+```
+
+
+### Draft Ranking
+
+Return a list of all draft ranking records.
+```elixir
+FFNerd.Player.DraftRanking.list(client)
+# [%FFNerd.Player.DraftRanking{...}, ...]
+
+# PPR
+
+FFNerd.Player.DraftRanking.list(:ppr, client)
+# [%FFNerd.Player.DraftRanking{ppr: "1", ...}, ...]
+```
+
+Return a list of all draft ranking records by position.
+```elixir
+FFNerd.Player.DraftRanking.list("QB", client)
+# [%FFNerd.Player.DraftRanking{position: "QB", ...}, ...]
+
+# PPR
+
+FFNerd.Player.DraftRanking.list(:ppr, "QB", client)
+# [%FFNerd.Player.DraftRanking{ppr: "1", position: "QB", ...}, ...]
+```
+
+Return a single auction draft ranking by person id.
+```elixir
+draft_rankings = FFNerd.Player.DraftRanking.find(1, client)
+# [%FFNerd.Player.DraftRanking{player_id: "1", ...}, ...]
+
+draft_rankings.avg_price     # "54"
+draft_rankings.display_name  # "julio jones"
+draft_rankings.max_price     # "60"
+draft_rankings.min_price     # "48"
+draft_rankings.player_id     # "1446"
+draft_rankings.position      # "wr"
+draft_rankings.ppr           # "0"
+draft_rankings.team          # "atl"
+
+# PPR
+
+draft_rankings = FFNerd.Player.DraftRanking.find(:ppr, 1446, client)
+# [%FFNerd.Player.DraftRanking{ppr: "1", player_id: "1446", ...}, ...]
+
+draft_rankings.ppr           # "1"
 ...
 ```
 
