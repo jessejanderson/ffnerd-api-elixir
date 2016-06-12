@@ -52,7 +52,7 @@ and can utilize dot syntax for easily calling data (examples below).
 
 Return a list of all team records.
 ```elixir
-teams = FFNerd.Team.list(client)
+FFNerd.Team.list(client)
 # [%FFNerd.Team{...}, ...]
 ```
 
@@ -76,13 +76,13 @@ FFNerd.Schedule.current_week(client)
 
 Return a list of all game records.
 ```elixir
-schedule = FFNerd.Schedule.list(client)
+FFNerd.Schedule.list(client)
 # [%FFNerd.Game{...}, ...]
 ```
 
 Return a list of game records by team code.
 ```elixir
-schedule = FFNerd.Schedule.list("SEA", client)
+FFNerd.Schedule.list("SEA", client)
 # [%FFNerd.Game{home_team: "SEA", ...}, ...]
 ```
 
@@ -104,13 +104,13 @@ game.tv_station     # "NBC"
 
 Return a list of all player records.
 ```elixir
-players = FFNerd.Player.list(client)
+FFNerd.Player.list(client)
 # [%FFNerd.Player{...}, ...]
 ```
 
 Return a list of player records by position code.
 ```elixir
-players = FFNerd.Player.list("QB", client)
+FFNerd.Player.list("QB", client)
 # [%FFNerd.Player{position: "QB", ...}, ...]
 ```
 
@@ -139,13 +139,13 @@ player.weight         # "206"
 
 Return a list of all bye week records.
 ```elixir
-bye_weeks = FFNerd.ByeWeek.list(client)
+FFNerd.ByeWeek.list(client)
 # [%FFNerd.ByeWeek{...}, ...]
 ```
 
 Return a list of bye week records by week number.
 ```elixir
-bye_weeks = FFNerd.ByeWeek.list(4, client)
+FFNerd.ByeWeek.list(4, client)
 # [%FFNerd.ByeWeek{bye_week: "4", ...}, ...]
 ```
 
@@ -175,7 +175,7 @@ FFNerd.Weather.current_week(client)
 
 Return a list of all weather forecast records.
 ```elixir
-teams = FFNerd.Weather.list(client)
+FFNerd.Weather.list(client)
 # [%FFNerd.Weather{...}, ...]
 ```
 
@@ -208,6 +208,57 @@ forecast.tv_station     # "FOX"
 forecast.wind_chill     # "0"
 forecast.wind_speed     # "0"
 ```
+
+### Auction Values
+
+Return a list of all auction value records.
+```elixir
+FFNerd.Player.AuctionValue.list(client)
+# [%FFNerd.Player.AuctionValue{...}, ...]
+```
+
+Return a list of all ppr auction value records.
+```elixir
+FFNerd.Player.AuctionValue.list(:ppr, client)
+# [%FFNerd.Player.AuctionValue{ppr: "1", ...}, ...]
+```
+
+Return a list of all auction value records by position.
+```elixir
+FFNerd.Player.AuctionValue.list("QB", client)
+# [%FFNerd.Player.AuctionValue{position: "QB", ...}, ...]
+```
+
+Return a list of all ppr auction value records by position.
+```elixir
+FFNerd.Player.AuctionValue.list(:ppr, "QB", client)
+# [%FFNerd.Player.AuctionValue{ppr: "1", position: "QB", ...}, ...]
+```
+
+Return a single auction value record by person id.
+```elixir
+auction_values = FFNerd.Player.AuctionValue.find(1, client)
+# [%FFNerd.Player.AuctionValue{player_id: "1", ...}, ...]
+
+auction_values.avg_price     # "54"
+auction_values.display_name  # "julio jones"
+auction_values.max_price     # "60"
+auction_values.min_price     # "48"
+auction_values.player_id     # "1446"
+auction_values.position      # "wr"
+auction_values.ppr           # "0"
+auction_values.team          # "atl"
+```
+
+Return a single ppr auction value record by person id.
+```elixir
+auction_values = FFNerd.Player.AuctionValue.find(:ppr, 1446, client)
+# [%FFNerd.Player.AuctionValue{ppr: "1", player_id: "1446", ...}, ...]
+
+auction_values.ppr           # "1"
+...
+```
+
 
 ## Installation
 

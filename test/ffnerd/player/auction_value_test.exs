@@ -14,7 +14,7 @@ defmodule FFNerd.Player.AuctionValueTest do
     assert [%FFNerd.Player.AuctionValue{} | _rest] = list(@client)
   end
 
-    test "Return a list of all auction value records by position." do
+  test "Return a list of all auction value records by position." do
     assert [%FFNerd.Player.AuctionValue{position: "QB"} | _rest] = list("QB", @client)
   end
 
