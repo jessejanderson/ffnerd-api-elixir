@@ -9,7 +9,7 @@ defmodule FFNerd.Player.Stats do
   """
 
   @doc """
-  Find player stats by id
+  Return player stats record by id.
 
   ## Examples
 
@@ -28,7 +28,7 @@ defmodule FFNerd.Player.Stats do
   end
 
   @doc """
-  Find player stats by id and year
+  Return player stats record by id and year.
 
   ## Examples
 
@@ -44,7 +44,7 @@ defmodule FFNerd.Player.Stats do
   end
 
   @doc """
-  Find player stats by id, year, and week
+  Return player stats record by id, year, and week.
 
   ## Examples
 
