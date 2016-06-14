@@ -10,9 +10,9 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
   - [X] NFL Players
   - [X] Bye Weeks
   - [X] Weather Forecasts
-  - [ ] Auction Values
-  - [ ] Draft Rankings
-  - [ ] Draft Projections
+  - [X] Auction Values
+  - [X] Draft Rankings
+  - [X] Draft Projections
   - [ ] Weekly Rankings
   - [ ] Weekly Projections
   - [ ] Weekly IDP Rankings
@@ -255,7 +255,6 @@ auction_values = FFNerd.Player.AuctionValue.find(:ppr, 1446, client)
 auction_values.ppr           # "1"
 ```
 
-
 ### Draft Ranking
 
 Return a list of all draft ranking records.
@@ -280,29 +279,58 @@ FFNerd.Player.DraftRanking.list(:ppr, "QB", client)
 # [%FFNerd.Player.DraftRanking{ppr: "1", position: "QB", ...}, ...]
 ```
 
-Return a single auction draft ranking by person id.
+Return a single draft ranking by person id.
 ```elixir
 draft_rankings = FFNerd.Player.DraftRanking.find(1, client)
-# [%FFNerd.Player.DraftRanking{player_id: "1", ...}, ...]
+# %FFNerd.Player.DraftRanking{player_id: "1446"}
 
 draft_rankings.avg_price     # "54"
-draft_rankings.display_name  # "julio jones"
+draft_rankings.display_name  # "Julio Jones"
 draft_rankings.max_price     # "60"
 draft_rankings.min_price     # "48"
 draft_rankings.player_id     # "1446"
-draft_rankings.position      # "wr"
+draft_rankings.position      # "WR"
 draft_rankings.ppr           # "0"
-draft_rankings.team          # "atl"
+draft_rankings.team          # "ATL"
 
 # PPR
 
 draft_rankings = FFNerd.Player.DraftRanking.find(:ppr, 1446, client)
-# [%FFNerd.Player.DraftRanking{ppr: "1", player_id: "1446", ...}, ...]
+# %FFNerd.Player.DraftRanking{ppr: "1", player_id: "1446"}
 
 draft_rankings.ppr           # "1"
 ...
 ```
 
+### Draft Projection
+
+**NOTE:** Draft Projection functions require a position ("QB", "RB", "WR", "TE", "K", "DEF") argument to be passed in.
+Because of this, there are no generic `list(client)` or `find(id, client)` functions for Draft Projection.
+
+Return a list of all draft projection records by position.
+```elixir
+FFNerd.Player.DraftProjection.list("QB", client)
+# [%FFNerd.Player.DraftProjection{position: "QB", ...}, ...]
+```
+
+Return a single draft projection by person id and position.
+```elixir
+draft_projections = FFNerd.Player.DraftProjection.find(1, "QB", client)
+# %FFNerd.Player.DraftProjection{player_id: "1847"}
+
+draft_projections.attempts        # "439"
+draft_projections.completions     # "274"
+draft_projections.display_name    # "Russell Wilson"
+draft_projections.fantasy_points  # "265"
+draft_projections.passing_int     # "10"
+draft_projections.passing_td      # "22"
+draft_projections.passing_yards   # "3310"
+draft_projections.player_id       # "1847"
+draft_projections.rush_td         # "3"
+draft_projections.rush_yards      # "474"
+draft_projections.team            # "SEA"
+...
+```
 
 ## Installation
 
