@@ -13,8 +13,8 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
   - [X] Auction Values
   - [X] Draft Rankings
   - [X] Draft Projections
-  - [ ] Weekly Rankings
-  - [ ] Weekly Projections
+  - [X] Weekly Rankings
+  - [X] Weekly Projections
   - [ ] Weekly IDP Rankings
   - [ ] Injuries
   - [ ] Depth Charts
