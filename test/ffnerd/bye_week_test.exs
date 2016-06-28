@@ -21,4 +21,12 @@ defmodule FFNerd.ByeWeekTest do
   test "Return a single bye week record by team code." do
     assert %FFNerd.ByeWeek{team: "SEA"} = find("SEA", @client)
   end
+
+  test "Return all details from a bye week record." do
+    bye = find("SEA", @client)
+
+    assert "12"               = bye.bye_week
+    assert "Seattle Seahawks" = bye.display_name
+    assert "SEA"              = bye.team
+  end
 end

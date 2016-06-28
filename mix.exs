@@ -33,7 +33,7 @@ defmodule FFNerd.Mixfile do
       {:ex_doc, "~> 0.11", only: :dev},
       {:exconstructor, "~> 1.0.2"},
       {:exvcr, "~> 0.6", only: :test},
-      {:httpoison, "~> 0.8"},
+      {:httpoison, "~> 0.8.0"},
       {:meck, "~> 0.8", only: :test},
       {:mix_test_watch, "~> 0.2", only: :dev},
       {:poison, "~> 2.0"},

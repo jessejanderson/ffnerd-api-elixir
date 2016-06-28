@@ -1,5 +1,5 @@
 defmodule FFNerd.ScheduleTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   import FFNerd.Schedule
 
   doctest FFNerd.Schedule

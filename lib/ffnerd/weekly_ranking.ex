@@ -1,4 +1,4 @@
-defmodule FFNerd.Player.WeeklyRanking do
+defmodule FFNerd.WeeklyRanking do
   defstruct [:game_status, :injury, :last_update, :name, :player_id, :position, :ppr, :ppr_low, :ppr_high, :practice_status, :standard, :standard_low, :standard_high, :team, :week]
   use ExConstructor
 
@@ -13,7 +13,7 @@ defmodule FFNerd.Player.WeeklyRanking do
 
   ## Examples
 
-  FFNerd.Player.WeeklyRanking.list "QB", client
+  FFNerd.WeeklyRanking.list "QB", client
 
   """
   def list(position, client) do
@@ -27,7 +27,7 @@ defmodule FFNerd.Player.WeeklyRanking do
 
   ## Examples
 
-    FFNerd.Player.WeeklyRanking.list "QB", client
+    FFNerd.WeeklyRanking.list "QB", client
 
   """
   def list(position, week, client) do
@@ -41,11 +41,10 @@ defmodule FFNerd.Player.WeeklyRanking do
 
   ## Examples
 
-    FFNerd.Player.WeeklyRanking.find 259, client
+    FFNerd.WeeklyRanking.find 259, client
 
   """
   def find(id, position, client) do
     list(position, client) |> Enum.find(&(&1.player_id == "#{id}"))
   end
 end
-

@@ -1,4 +1,4 @@
-defmodule FFNerd.Player.DraftRanking do
+defmodule FFNerd.DraftRanking do
   defstruct [:bye_week, :display_name, :fname, :lname, :nerd_rank, :overall_rank, :ppr, :player_id, :position, :position_rank, :team]
   use ExConstructor
 
@@ -13,9 +13,9 @@ defmodule FFNerd.Player.DraftRanking do
 
   ## Examples
 
-    FFNerd.Player.DraftRanking.list client
+    FFNerd.DraftRanking.list client
 
-    FFNerd.Player.DraftRanking.list :ppr, client
+    FFNerd.DraftRanking.list :ppr, client
 
   """
   def list(client) do
@@ -35,9 +35,9 @@ defmodule FFNerd.Player.DraftRanking do
 
   ## Examples
 
-    FFNerd.Player.DraftRanking.list "QB", client
+    FFNerd.DraftRanking.list "QB", client
 
-    FFNerd.Player.DraftRanking.list :ppr, "QB", client
+    FFNerd.DraftRanking.list :ppr, "QB", client
 
   """
   def list(position, client) do
@@ -53,9 +53,9 @@ defmodule FFNerd.Player.DraftRanking do
 
   ## Examples
 
-    FFNerd.Player.DraftRanking.find 259, client
+    FFNerd.DraftRanking.find 259, client
 
-    FFNerd.Player.DraftRanking.find :ppr, 259, client
+    FFNerd.DraftRanking.find :ppr, 259, client
 
   """
   def find(id, client) do
@@ -66,4 +66,3 @@ defmodule FFNerd.Player.DraftRanking do
     list(:ppr, client) |> Enum.find(&(&1.player_id == "#{id}"))
   end
 end
-

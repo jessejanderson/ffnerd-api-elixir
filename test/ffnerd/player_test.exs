@@ -1,5 +1,5 @@
 defmodule FFNerd.PlayerTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   import FFNerd.Player
 
   doctest FFNerd.Player
@@ -25,5 +25,22 @@ defmodule FFNerd.PlayerTest do
   test "Return the display name from a player record." do
     player = find(2, @client)
     assert "Derek Anderson" = player.display_name
+  end
+
+  test "Return all details from a player record." do
+    player = find(2, @client)
+
+    assert "1"              = player.active
+    assert "Oregon State"   = player.college
+    assert "Derek Anderson" = player.display_name
+    assert "1983-06-15"     = player.dob
+    assert "Derek"          = player.fname
+    assert "6-6"            = player.height
+    assert "3"              = player.jersey
+    assert "Anderson"       = player.lname
+    assert "2"              = player.player_id
+    assert "QB"             = player.position
+    assert "CAR"            = player.team
+    assert "240"            = player.weight
   end
 end

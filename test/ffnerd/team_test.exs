@@ -1,5 +1,5 @@
 defmodule FFNerd.TeamTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   import FFNerd.Team
 
   doctest FFNerd.Team

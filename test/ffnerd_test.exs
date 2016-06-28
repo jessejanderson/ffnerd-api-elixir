@@ -1,5 +1,5 @@
 defmodule FFNerdTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   doctest FFNerd
 
   test "the truth" do

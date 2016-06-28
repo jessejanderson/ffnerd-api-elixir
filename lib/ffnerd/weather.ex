@@ -1,12 +1,60 @@
 defmodule FFNerd.Weather do
-  defstruct [:game_id, :game_week, :game_date, :away_team, :home_team, :game_time_et, :tv_station, :stadium, :is_dome, :geo_lat, :geo_long, :low, :high, :forecast, :wind_chill, :wind_speed, :dome_img, :small_img, :medium_img, :large_img]
-  use ExConstructor
+  defstruct [
+    :away_team,
+    :dome_img,
+    :forecast,
+    :game_date,
+    :game_id,
+    :game_time_et,
+    :game_week,
+    :geo_lat,
+    :geo_long,
+    :high,
+    :home_team,
+    :is_dome,
+    :large_img,
+    :low,
+    :medium_img,
+    :small_img,
+    :stadium,
+    :tv_station,
+    :wind_chill,
+    :wind_speed,
+  ]
 
   @moduledoc """
   Provides functions to work with Fantasy Football Nerd's Weather Forecasts resources.
 
   More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#weather
   """
+
+  @doc """
+  Convert raw api data to Weather struct.
+  """
+  def new(map) do
+    %FFNerd.Weather{
+      away_team:    map["awayTeam"],
+      dome_img:     map["domeImg"],
+      forecast:     map["forecast"],
+      game_date:    map["gameDate"],
+      game_id:      map["gameId"],
+      game_time_et: map["gameTimeET"],
+      game_week:    map["gameWeek"],
+      geo_lat:      map["geoLat"],
+      geo_long:     map["geoLong"],
+      high:         map["high"],
+      home_team:    map["homeTeam"],
+      is_dome:      map["isDome"],
+      large_img:    map["largeImg"],
+      low:          map["low"],
+      medium_img:   map["mediumImg"],
+      small_img:    map["smallImg"],
+      stadium:      map["stadium"],
+      tv_station:   map["tvStation"],
+      wind_chill:   map["windChill"],
+      wind_speed:   map["windSpeed"]
+    }
+  end
 
   @doc """
   Return the associated current date.
@@ -16,7 +64,7 @@ defmodule FFNerd.Weather do
     FFNerd.Schedule.today client
 
   """
-  def today(client) do
+  def current_date(client) do
     FFNerd.get({:Today, %FFNerd.URL{service: "weather"}}, client)
   end
 
@@ -28,7 +76,7 @@ defmodule FFNerd.Weather do
     FFNerd.Schedule.week client
 
   """
-  def week(client) do
+  def current_week(client) do
     FFNerd.get({:Week, %FFNerd.URL{service: "weather"}}, client)
   end
 

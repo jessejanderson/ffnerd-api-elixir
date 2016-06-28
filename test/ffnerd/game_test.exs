@@ -1,5 +1,5 @@
 defmodule FFNerd.GameTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   import FFNerd.Game
 
   doctest FFNerd.Game
@@ -18,8 +18,15 @@ defmodule FFNerd.GameTest do
     assert %FFNerd.Game{game_id: "2"} = find(2, @client)
   end
 
-  test "get tv station name from game" do
+  test "Return all details from a game record." do
     game = find(2, @client)
-    assert "CBS" = game.tv_station
+
+    assert "NE"         = game.away_team
+    assert "2013-09-08" = game.game_date
+    assert "2"          = game.game_id
+    assert "1:00 PM"    = game.game_time_et
+    assert "1"          = game.game_week
+    assert "BUF"        = game.home_team
+    assert "CBS"        = game.tv_station
   end
 end

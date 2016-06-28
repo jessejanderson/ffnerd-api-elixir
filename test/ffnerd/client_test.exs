@@ -1,5 +1,5 @@
 defmodule FFNerd.ClientTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   import FFNerd.Client
 
   doctest FFNerd.Client
