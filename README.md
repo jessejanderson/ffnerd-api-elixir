@@ -5,30 +5,30 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
 ## To Do
 
 - [ ] Implement API Services
-  - [X] NFL Teams
-  - [X] NFL Schedule
-  - [X] NFL Players
-  - [X] Bye Weeks
-  - [X] Weather Forecasts
-  - [X] Auction Values
-  - [X] Draft Rankings
-  - [X] Draft Projections
-  - [X] Weekly Rankings
-  - [X] Weekly Projections
-  - [X] Weekly IDP Rankings
-  - [ ] Injuries
+  - [x] NFL Teams
+  - [x] NFL Schedule
+  - [x] NFL Players
+  - [x] Bye Weeks
+  - [x] Weather Forecasts
+  - [x] Auction Values
+  - [x] Draft Rankings
+  - [x] Draft Projections
+  - [x] Weekly Rankings
+  - [x] Weekly Projections
+  - [x] Weekly IDP Rankings
+  - [x] Injuries
   - [ ] Depth Charts
   - [ ] NFL Picks
   - [ ] Defensive Rankings
   - [ ] Game Day Inactives
-  - [X] Player Stats & Info
+  - [x] Player Stats & Info
     - [X] Videos
   - [ ] Daily Fantasy Football
 - [ ] Check fail states for API Access levels
 - [ ] Consider adding fields to %FFNerd.Player for Projections, Rankings, etc
 - [ ] Update Readme with setup instructions
 - [ ] Setup and trial using as a hex package
-- [ ] Add additional "Examples of use" such as finding which teams are on a bye week, piping the team shortcode to get other information such as players, weather conditions, etc based on the team shortcode.
+- [ ] Add additional "Examples of use" such as finding which teams are on a bye week, piping the team short code to get other information such as players, weather conditions, etc based on the team short code.
 
 ## Setup
 
@@ -52,12 +52,14 @@ and can utilize dot syntax for easily calling data (examples below).
 ### Teams
 
 Return a list of all team records.
+
 ```elixir
 FFNerd.Team.list(client)
 # [%FFNerd.Team{...}, ...]
 ```
 
 Return a single team record by team code.
+
 ```elixir
 team = FFNerd.Team.find("SEA", client)
 # %FFNerd.Team{...}
@@ -70,24 +72,28 @@ team.short_name   # "Seahawks"
 ### Schedule
 
 Return the associated current week.
+
 ```elixir
 FFNerd.Schedule.current_week(client)
 # "1"
 ```
 
 Return a list of all game records.
+
 ```elixir
 FFNerd.Schedule.list(client)
 # [%FFNerd.Game{...}, ...]
 ```
 
 Return a list of game records by team code.
+
 ```elixir
 FFNerd.Schedule.list("SEA", client)
 # [%FFNerd.Game{home_team: "SEA", ...}, ...]
 ```
 
 Return a single game record by game id.
+
 ```elixir
 game = FFNerd.Schedule.find(1, client)
 # %FFNerd.Game{...}
@@ -104,18 +110,21 @@ game.tv_station     # "NBC"
 ### Players
 
 Return a list of all player records.
+
 ```elixir
 FFNerd.Player.list(client)
 # [%FFNerd.Player{...}, ...]
 ```
 
 Return a list of player records by position code.
+
 ```elixir
 FFNerd.Player.list("QB", client)
 # [%FFNerd.Player{position: "QB", ...}, ...]
 ```
 
 Return a single player record by player id.
+
 ```elixir
 player = FFNerd.Player.find(1, client)
 # %FFNerd.Player{...}
@@ -137,18 +146,21 @@ player.weight         # "206"
 ### Bye Weeks
 
 Return a list of all bye week records.
+
 ```elixir
 FFNerd.ByeWeek.list(client)
 # [%FFNerd.ByeWeek{...}, ...]
 ```
 
 Return a list of bye week records by week number.
+
 ```elixir
 FFNerd.ByeWeek.list(4, client)
 # [%FFNerd.ByeWeek{bye_week: "4", ...}, ...]
 ```
 
 Return a single bye week record by team code.
+
 ```elixir
 bye_week = FFNerd.ByeWeek.find("SEA", client)
 # %FFNerd.ByeWeek{...}
@@ -161,24 +173,28 @@ bye_week.team           # "SEA
 ### Weather Forecasts
 
 Return the associated current date.
+
 ```elixir
 FFNerd.Weather.current_date(client)
 # "2014-09-02"
 ```
 
 Return the associated current week.
+
 ```elixir
 FFNerd.Weather.current_week(client)
 # "1"
 ```
 
 Return a list of all weather forecast records.
+
 ```elixir
 FFNerd.Weather.list(client)
 # [%FFNerd.Weather{...}, ...]
 ```
 
 Return a single weather forecast record by team code **OR** game id.
+
 ```elixir
 forecast = FFNerd.Weather.find("SEA", client)
 # %FFNerd.Weather{home_team: "SEA", ...}
@@ -211,6 +227,7 @@ forecast.wind_speed     # "0"
 ### Auction Values
 
 Return a list of all auction value records.
+
 ```elixir
 FFNerd.AuctionValue.list(client)
 # [%FFNerd.AuctionValue{...}, ...]
@@ -222,6 +239,7 @@ FFNerd.AuctionValue.list(:ppr, client)
 ```
 
 Return a list of all auction value records by position.
+
 ```elixir
 FFNerd.AuctionValue.list("QB", client)
 # [%FFNerd.AuctionValue{position: "QB", ...}, ...]
@@ -233,6 +251,7 @@ FFNerd.AuctionValue.list(:ppr, "QB", client)
 ```
 
 Return a single auction value record by person id.
+
 ```elixir
 auction_values = FFNerd.AuctionValue.find(1, client)
 # [%FFNerd.AuctionValue{player_id: "1", ...}, ...]
@@ -257,6 +276,7 @@ auction_values.ppr           # "1"
 ### Draft Ranking
 
 Return a list of all draft ranking records.
+
 ```elixir
 FFNerd.DraftRanking.list(client)
 # [%FFNerd.DraftRanking{...}, ...]
@@ -268,6 +288,7 @@ FFNerd.DraftRanking.list(:ppr, client)
 ```
 
 Return a list of all draft ranking records by position.
+
 ```elixir
 FFNerd.DraftRanking.list("QB", client)
 # [%FFNerd.DraftRanking{position: "QB", ...}, ...]
@@ -279,6 +300,7 @@ FFNerd.DraftRanking.list(:ppr, "QB", client)
 ```
 
 Return a single draft ranking by person id.
+
 ```elixir
 draft_rankings = FFNerd.DraftRanking.find(1, client)
 # %FFNerd.DraftRanking{player_id: "1446"}
@@ -309,12 +331,14 @@ draft_rankings.ppr            # "1"
 Because of this, there are no generic `list(client)` or `find(id, client)` functions for Draft Projection.
 
 Return a list of all draft projection records by position.
+
 ```elixir
 FFNerd.DraftProjection.list("QB", client)
 # [%FFNerd.DraftProjection{position: "QB", ...}, ...]
 ```
 
 Return a single draft projection record by person id and position.
+
 ```elixir
 draft_projections = FFNerd.DraftProjection.find(1, "QB", client)
 # %FFNerd.DraftProjection{player_id: "1847"}
@@ -342,23 +366,26 @@ draft_projections.rush_attempts          # nil
 draft_projections.rush_tds               # "3"
 draft_projections.rush_yards             # "474"
 draft_projections.team                   # "SEA"
-...
 ```
 
 ### Weekly Ranking
 
 Return a list of all weekly ranking records.
+
 ```elixir
 FFNerd.WeeklyRanking.list(client)
 # [%FFNerd.WeeklyRanking{...}, ...]
 ```
 
 Return a list of all weekly ranking records by position.
+
 ```elixir
 FFNerd.WeeklyRanking.list("QB", client)
 # [%FFNerd.WeeklyRanking{position: "QB", ...}, ...]
+```
 
 Return a single weekly ranking by person id.
+
 ```elixir
 weekly_rankings = FFNerd.WeeklyRanking.find(1, client)
 # %FFNerd.WeeklyRanking{player_id: "1446"}
@@ -386,12 +413,14 @@ weekly_rankings.week             # "2"
 Because of this, there are no generic `list(client)` or `find(id, client)` functions for Weekly Projection.
 
 Return a list of all weekly projection records by position.
+
 ```elixir
 FFNerd.Player.WeeklyProjection.list("QB", client)
 # [%FFNerd.Player.WeeklyProjection{position: "QB", ...}, ...]
 ```
 
 Return a single weekly projection by person id and position.
+
 ```elixir
 weekly_projections = FFNerd.Player.WeeklyProjection.find(1, "QB", client)
 # %FFNerd.Player.WeeklyProjection{player_id: "1847"}
@@ -425,19 +454,22 @@ weekly_projections.rush_tds               # "0.0"
 weekly_projections.rush_yards             # "29.0"
 weekly_projections.team                   # "SEA"
 weekly_projections.week                   # "1"
-...
 ```
 
 ### Weekly IDP Ranking
-**NOTE:** Fantasy Football Nerd does not provide a `player_id` for IDP players so there is no `find(id, client)` function.
 
-Return a list of all weekly idp ranking records.
+**NOTE:** Fantasy Football Nerd does not provide a `player_id` for IDP players
+so there is no `find(id, client)` function.
+
+Return a list of all weekly IDP ranking records.
+
 ```elixir
 FFNerd.WeeklyIDPRanking.list(client)
 # [%FFNerd.WeeklyIDPRanking{...}, ...]
 ```
 
-Return a list of all weekly idp ranking records by position.
+Return a list of all weekly IDP ranking records by position.
+
 ```elixir
 idp_rankings = FFNerd.WeeklyIDPRanking.list("DE", client) |> List.first
 # [%FFNerd.WeeklyIDPRanking{position: "DE", ...}, ...]
@@ -451,6 +483,7 @@ idp_rankings.team      # "HOU"
 ### Player Stats
 
 Return a single player's stats by player id.
+
 ```elixir
 player_stats = FFNerd.Player.Stats.find(14, client)
 # %{"2007" => %{"1" => %FFNerd.Player.Stats{player_id: "14", ...}, ...}, ...}
@@ -459,6 +492,7 @@ player_stats["2013"]["1"].pass_yards  # "357"
 ```
 
 Return a single player's stats by player id and year.
+
 ```elixir
 player_stats = FFNerd.Player.Stats.find(14, 2013, client)
 # %{"1" => %FFNerd.Player.Stats{player_id: "14", ...}, ...}
@@ -467,6 +501,7 @@ player_stats["1"].pass_yards  # "357"
 ```
 
 Return a single player's stats by player id, year, and week.
+
 ```elixir
 player_stats = FFNerd.Player.Stats.find(14, 2013, 1, client)
 # %FFNerd.Player.Stats{player_id: "14", ...}
@@ -505,6 +540,7 @@ player_stats.year                # "2013"
 ### Player Videos
 
 Return a single player's videos by player id.
+
 ```elixir
 videos = FFNerd.Player.Video(14, client)
 # [%FFNerd.Player.Video{}, ...]
@@ -513,6 +549,64 @@ video = videos |> List.first
 
 video.video_title  # "NFL Top 100 Players of 2012 : Drew Brees #2"
 video.youtube_id   # "9cMvQ-uD4aI"
+```
+
+
+
+### Injuries
+
+Return all injuries for current week.
+
+```elixir
+injuries = FFNerd.Injury.list(client)
+# %{"ARI" => [%FFNerd.Injury{...}, ...], ...}
+```
+
+Return all injuries by week.
+
+```elixir
+injuries = FFNerd.Injury.list(17, client)
+# %{"ARI" => [%FFNerd.Injury{week: "17", ...}, ...], ...}
+```
+
+Return team injuries for current week by team code.
+
+```elixir
+injuries = FFNerd.Injury.list("SEA", client)
+# [%FFNerd.Injury{team: "SEA", ...}, ...]
+```
+
+Return team injuries by week and team code.
+
+```elixir
+injuries = FFNerd.Injury.list("SEA", 17, client)
+# [%FFNerd.Injury{team: "SEA", week: "17", ...}, ...]
+```
+
+Return a single injury record for current week by player id and team code
+
+```elixir
+player_injuries = FFNerd.Injury.find(1465, "ARI", client)
+# %FFNerd.Injury{player_id: "1465", team: "ARI", ...}
+
+player_injuries.game_status         # "Out"
+player_injuries.injury              # "Ankle"
+player_injuries.last_update         # "2013-09-09"
+player_injuries.notes               # "Missed Week 1 at St. Louis"
+player_injuries.player_id           # "1465"
+player_injuries.player_name         # "Rob Housler"
+player_injuries.position            # "TE"
+player_injuries.practice_status     # "Did not practice"
+player_injuries.practice_status_id  # "1"
+player_injuries.team                # "ARI"
+player_injuries.week                # "1"
+```
+
+Return a single injury record for current week by player id, team code, and week
+
+```elixir
+player_injuries = FFNerd.Injury.find(1465, "ARI", 17, client)
+# %FFNerd.Injury{player_id: "1465", team: "ARI", week: "17"...}
 ```
 
 ## Installation
@@ -533,7 +627,8 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 ## Thanks
 
-Thanks to these 2 projects for being sources of inspiration for creating my own FFN API wrapper in Elixir:
+Thanks to these 2 projects for being sources of inspiration for creating my own
+FFN API wrapper in Elixir:
 
 [Fantasy Football Nerd API Ruby Gem](https://github.com/GregBaugues/fantasy_football_nerd/)
 
