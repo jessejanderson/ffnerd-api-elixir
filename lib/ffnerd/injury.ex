@@ -12,7 +12,6 @@ defmodule FFNerd.Injury do
     :team,
     :week,
   ]
-  use ExConstructor
 
   @moduledoc """
   Provides functions to work with Fantasy Football Nerd's Injury resources.

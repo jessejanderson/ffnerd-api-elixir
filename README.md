@@ -17,7 +17,7 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
   - [x] Weekly Projections
   - [x] Weekly IDP Rankings
   - [x] Injuries
-  - [ ] Depth Charts
+  - [x] Depth Charts
   - [ ] NFL Picks
   - [ ] Defensive Rankings
   - [ ] Game Day Inactives
@@ -558,28 +558,28 @@ video.youtube_id   # "9cMvQ-uD4aI"
 Return all injuries for current week.
 
 ```elixir
-injuries = FFNerd.Injury.list(client)
+FFNerd.Injury.list(client)
 # %{"ARI" => [%FFNerd.Injury{...}, ...], ...}
 ```
 
 Return all injuries by week.
 
 ```elixir
-injuries = FFNerd.Injury.list(17, client)
+FFNerd.Injury.list(17, client)
 # %{"ARI" => [%FFNerd.Injury{week: "17", ...}, ...], ...}
 ```
 
 Return team injuries for current week by team code.
 
 ```elixir
-injuries = FFNerd.Injury.list("SEA", client)
+FFNerd.Injury.list("SEA", client)
 # [%FFNerd.Injury{team: "SEA", ...}, ...]
 ```
 
 Return team injuries by week and team code.
 
 ```elixir
-injuries = FFNerd.Injury.list("SEA", 17, client)
+FFNerd.Injury.list("SEA", 17, client)
 # [%FFNerd.Injury{team: "SEA", week: "17", ...}, ...]
 ```
 
@@ -605,8 +605,45 @@ player_injuries.week                # "1"
 Return a single injury record for current week by player id, team code, and week
 
 ```elixir
-player_injuries = FFNerd.Injury.find(1465, "ARI", 17, client)
+FFNerd.Injury.find(1465, "ARI", 17, client)
 # %FFNerd.Injury{player_id: "1465", team: "ARI", week: "17"...}
+```
+
+
+### Depth Charts
+
+Return all depth charts.
+
+```elixir
+FFNerd.DepthChart.list(client)
+# %{"SEA" => %FFNerd.DepthChart{qb: [%FFNerd.DepthChart.Player{player_name: "Russell Wilson"}, ...] ...}, ...}
+```
+
+Return one team's depth charts by team code.
+
+```elixir
+FFNerd.DepthChart.list("SEA", client)
+# %FFNerd.DepthChart{qb: [%FFNerd.DepthChart.Player{player_name: "Russell Wilson"}, ...] ...}
+```
+
+Return one team's position depth charts by team code and position.
+
+```elixir
+FFNerd.DepthChart.list("SEA", "QB", client)
+# [%FFNerd.DepthChart.Player{player_name: "Russell Wilson"}, ...]
+```
+
+Return depth chart player by team code, position, and depth.
+
+```elixir
+player = FFNerd.DepthChart.find("SEA", "WR1", 1, client)
+# %FFNerd.DepthChart.Player{player_name: "Doug Baldwin"}
+
+player.depth        # "1"
+player.player_id    # "1549"
+player.player_name  # "Doug Baldwin"
+player.position     # "WR1"
+player.team         # "SEA"
 ```
 
 ## Installation

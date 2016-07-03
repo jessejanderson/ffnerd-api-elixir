@@ -16,7 +16,6 @@ defmodule FFNerd.InjuryTest do
   end
 
   test "Return all team injuries by team code." do
-    injuries = list("ARI", @client)
     assert [%FFNerd.Injury{team: "ARI"} | _rest] = list("ARI", @client)
   end
 
@@ -29,7 +28,7 @@ defmodule FFNerd.InjuryTest do
 
   # test "Return all team injuries by team code and week." do
   #   injuries = list("ARI", 17, @client)
-  #   assert [%FFNerd.Injury{team: "ARI", week: "17"} | _rest] = list("ARI", @client)
+  #   assert [%FFNerd.Injury{team: "ARI", week: "17"} | _rest] = injuries
   # end
 
   test "Return one player's injuries by player id and team code." do
