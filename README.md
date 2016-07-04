@@ -20,7 +20,7 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
   - [x] Depth Charts
   - [ ] NFL Picks
   - [ ] Defensive Rankings
-  - [ ] Game Day Inactives
+  - [x] Game Day Inactives
   - [x] Player Stats & Info
     - [X] Videos
   - [ ] Daily Fantasy Football
@@ -609,7 +609,6 @@ FFNerd.Injury.find(1465, "ARI", 17, client)
 # %FFNerd.Injury{player_id: "1465", team: "ARI", week: "17"...}
 ```
 
-
 ### Depth Charts
 
 Return all depth charts.
@@ -644,6 +643,47 @@ player.player_id    # "1549"
 player.player_name  # "Doug Baldwin"
 player.position     # "WR1"
 player.team         # "SEA"
+```
+
+
+
+
+
+### Inactives
+
+Return all inactive records for current week.
+
+```elixir
+FFNerd.Inactive.list(client)
+# [%FFNerd.Inactive{display_name: "Andre Brown"}, ...]
+```
+
+Return all inactive records by week.
+
+```elixir
+FFNerd.Inactive.list(17, client)
+# [%FFNerd.Inactive{display_name: "Adrian Peterson", week: "17"}, ...]
+```
+
+Return one inactive record for current week by player id.
+
+```elixir
+inactive = find(1465, client)
+# %FFNerd.Inactive{display_name: "Rob Housler"}
+
+inactive.display_name  # "Rob Housler"
+inactive.player_id     # "1465"
+inactive.position      # "TE"
+inactive.team          # "ARI"
+inactive.week          # "1"
+inactive.year          # "2013"
+```
+
+Return one inactive record by player id and week.
+
+```elixir
+inactive = find(259, 17, client)
+# %FFNerd.Inactive{player_id "259", week: "17"}
 ```
 
 ## Installation
