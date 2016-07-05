@@ -48,7 +48,7 @@ defmodule FFNerd.Inactive do
 
   ## Examples
 
-    FFNerd.Inactive.list 1465, client
+    FFNerd.Inactive.find 1465, client
 
   """
   def find(id, client) do
@@ -60,7 +60,7 @@ defmodule FFNerd.Inactive do
 
   ## Examples
 
-    FFNerd.Inactive.list 259, 17, client
+    FFNerd.Inactive.find 259, 17, client
 
   """
   def find(id, week, client) do

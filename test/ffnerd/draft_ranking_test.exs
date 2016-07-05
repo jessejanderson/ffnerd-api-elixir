@@ -39,19 +39,19 @@ defmodule FFNerd.DraftRankingTest do
     assert %FFNerd.DraftRanking{ppr: "1"} = find(:ppr, 259, @client)
   end
 
-  test "Return the details from an draft ranking record." do
-    draft_rankings = find(:ppr, 1446, @client)
+  test "Return the details from a draft ranking record." do
+    draft_ranking = find(:ppr, 1446, @client)
 
-    assert "6"           = draft_rankings.bye_week
-    assert "Julio Jones" = draft_rankings.display_name
-    assert "Julio"       = draft_rankings.fname
-    assert "Jones"       = draft_rankings.lname
-    assert "19.617"      = draft_rankings.nerd_rank
-    assert "15"          = draft_rankings.overall_rank
-    assert "1446"        = draft_rankings.player_id
-    assert "WR"          = draft_rankings.position
-    assert "6"           = draft_rankings.position_rank
-    assert "1"           = draft_rankings.ppr
-    assert "ATL"         = draft_rankings.team
+    assert "6"           = draft_ranking.bye_week
+    assert "Julio Jones" = draft_ranking.display_name
+    assert "Julio"       = draft_ranking.fname
+    assert "Jones"       = draft_ranking.lname
+    assert "19.617"      = draft_ranking.nerd_rank
+    assert "15"          = draft_ranking.overall_rank
+    assert "1446"        = draft_ranking.player_id
+    assert "WR"          = draft_ranking.position
+    assert "6"           = draft_ranking.position_rank
+    assert "1"           = draft_ranking.ppr
+    assert "ATL"         = draft_ranking.team
   end
 end
