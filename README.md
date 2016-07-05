@@ -645,9 +645,32 @@ player.position     # "WR1"
 player.team         # "SEA"
 ```
 
+### Defense Ranking
 
+Return all defense ranking records.
 
+```elixir
+FFNerd.DefenseRanking.list(client)
+# [%FFNerd.DefenseRanking{team_name: "SEA"}, ...]
+```
 
+Return one defense ranking record by team code.
+
+```elixir
+defense = find("SEA" client)
+# %FFNerd.DefenseRanking{team_name: "SEA"}
+
+defense.pass_yards_per_game       = "173.8"
+defense.pass_yards_per_game_rank_ = "1"
+defense.points_per_game           = "14.8"
+defense.points_per_game_rank      = "2"
+defense.rush_yards_per_game       = "107.5"
+defense.rush_yards_per_game_rank  = "12"
+defense.team                      = "SEA"
+defense.team_name                 = "Seattle Seahawks"
+defense.total_yards_per_game      = "281.3"
+defense.total_yards_per_game_rank = "1"
+```
 
 ### Inactives
 
