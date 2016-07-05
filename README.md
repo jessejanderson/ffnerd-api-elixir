@@ -19,7 +19,7 @@ Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballner
   - [x] Injuries
   - [x] Depth Charts
   - [ ] NFL Picks
-  - [ ] Defensive Rankings
+  - [x] Defense Rankings
   - [x] Game Day Inactives
   - [x] Player Stats & Info
     - [X] Videos
