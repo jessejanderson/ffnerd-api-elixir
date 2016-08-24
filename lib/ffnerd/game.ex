@@ -8,7 +8,7 @@ defmodule FFNerd.Game do
   """
 
   @doc """
-  Convert raw api data to WeeklyProjection struct.
+  Convert raw api data to Game struct.
   """
   def new(map) do
     %FFNerd.Game{
@@ -18,7 +18,7 @@ defmodule FFNerd.Game do
       away_team:    map["awayTeam"],
       home_team:    map["homeTeam"],
       game_time_et: map["gameTimeET"],
-      tv_station:   map["tvStation"]
+      tv_station:   map["tvStation"],
     }
   end
 
