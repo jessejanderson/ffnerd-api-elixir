@@ -2,32 +2,12 @@
 
 Elixir wrapper for the [Fantasy Football Nerd API](http://www.fantasyfootballnerd.com/fantasy-football-api)
 
-## To Do
+## To Do (not in order)
 
-- [ ] Implement API Services
-  - [x] NFL Teams
-  - [x] NFL Schedule
-  - [x] NFL Players
-  - [x] Bye Weeks
-  - [x] Weather Forecasts
-  - [x] Auction Values
-  - [x] Draft Rankings
-  - [x] Draft Projections
-  - [x] Weekly Rankings
-  - [x] Weekly Projections
-  - [x] Weekly IDP Rankings
-  - [x] Injuries
-  - [x] Depth Charts
-  - [ ] NFL Picks
-  - [x] Defense Rankings
-  - [x] Game Day Inactives
-  - [x] Player Stats & Info
-    - [X] Videos
-  - [ ] Daily Fantasy Football
 - [ ] Check fail states for API Access levels
-- [ ] Consider adding fields to %FFNerd.Player for Projections, Rankings, etc
-- [ ] Update Readme with setup instructions
 - [ ] Setup and trial using as a hex package
+- [ ] Update Readme with setup instructions
+- [ ] Implement Daily Fantasy Football
 - [ ] Add additional "Examples of use" such as finding which teams are on a bye week, piping the team short code to get other information such as players, weather conditions, etc based on the team short code.
 
 ## Setup
@@ -551,8 +531,6 @@ video.video_title  # "NFL Top 100 Players of 2012 : Drew Brees #2"
 video.youtube_id   # "9cMvQ-uD4aI"
 ```
 
-
-
 ### Injuries
 
 Return all injuries for current week.
@@ -707,6 +685,49 @@ Return one inactive record by player id and week.
 ```elixir
 inactive = find(259, 17, client)
 # %FFNerd.Inactive{player_id "259", week: "17"}
+```
+
+## Expert Picks (NFL Picks)
+
+Return a list of expert pick records by game id.
+
+```elixir
+FFNerd.ExpertPick.list(49, client)
+# [%FFNerd.ExpertPick{expert_name: "Adam Meyer"}, ...]
+```
+
+Return a expert pick record for current week by game id and expert name.
+
+```elixir
+FFNerd.ExpertPick.find("Adam Meyer", 49, client)
+# %FFNerd.ExpertPick{expert_name: "Adam Meyer", ...}
+```
+
+Return a list of expert pick game records for current week.
+
+```elixir
+FFNerd.ExpertPick.Game.list(client)
+# [%FFNerd.ExpertPick.Game{game_date: "2015-10-01"}, ...]
+```
+
+Return an expert pick game record for current week by game id.
+
+```elixir
+game = FFNerd.ExpertPick.Game.find(49, client)
+# %FFNerd.ExpertPick.Game{game_date: "2015-10-01"}
+
+game.away_team assert  # "BAL"
+game.away_team_record  # %{ "wins" => 0, "losses" => 3 }
+game.consensus_count   # %{ "BAL" => 24, "PIT" => 18 }
+game.consensus_pick    # "BAL"
+game.game_date         # "2015-10-01"
+game.game_id           # "49"
+game.game_time_et      # "8:25 PM"
+game.home_team         # "PIT"
+game.home_team_record  # %{ "wins" => 2, "losses" => 1 }
+game.picks             # [%FFNerd.ExpertPick{} | _]
+game.tv_station        # "CBS"
+game.winner            # "BAL"
 ```
 
 ## Installation

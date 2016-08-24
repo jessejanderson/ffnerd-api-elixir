@@ -13,7 +13,7 @@ defmodule FFNerd.ExpertPick do
 
   ## Examples
 
-    FFNerd.DraftRanking.list 49, client
+    FFNerd.ExpertPick.list 49, client
 
   """
   def list(game_id, client) do
@@ -24,6 +24,14 @@ defmodule FFNerd.ExpertPick do
     |> Enum.map(&new/1)
   end
 
+  @doc """
+  Return an expert pick record for current week by game id and expert name.
+
+  ## Examples
+
+    FFNerd.ExpertPick.find "Adam Meyer", 49, client
+
+  """
   def find(name, game_id, client) do
     list(game_id, client) |> Enum.find(&(&1.expert_name == "#{name}"))
   end

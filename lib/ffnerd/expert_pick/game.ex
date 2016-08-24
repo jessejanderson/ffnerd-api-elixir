@@ -41,11 +41,11 @@ defmodule FFNerd.ExpertPick.Game do
   end
 
   @doc """
-  Return a list of expert pick records by game id.
+  Return a list of expert pick game records for current week.
 
   ## Examples
 
-    FFNerd.DraftRanking.list 49, client
+    FFNerd.ExpertPick.Game.list client
 
   """
   def list(client) do
@@ -59,8 +59,15 @@ defmodule FFNerd.ExpertPick.Game do
        end)
   end
 
+  @doc """
+  Return an expert pick game record for current week by game id.
+
+  ## Examples
+
+    FFNerd.ExpertPick.Game.find 49, client
+
+  """
   def find(game_id, client) do
-    # list(client) |> Enum.find(&(&1.expert_name == "#{name}"))
     list(client) |> Enum.find(&(&1.game_id == "#{game_id}"))
   end
 end
