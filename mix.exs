@@ -3,29 +3,19 @@ defmodule FFNerd.Mixfile do
 
   def project do
     [app: :ffnerd,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     description: description(),
+     package: package(),
      deps: deps]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
     [applications: [ :logger, :httpoison, :exconstructor ]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [
       {:credo, "~> 0.3", only: [:dev, :test]},
@@ -37,6 +27,21 @@ defmodule FFNerd.Mixfile do
       {:meck, "~> 0.8", only: :test},
       {:mix_test_watch, "~> 0.2", only: :dev},
       {:poison, "~> 2.0"},
+    ]
+  end
+
+  defp description do
+    """
+    An Elixir wrapper for the Fantasy Football Nerd API (http://www.fantasyfootballnerd.com/fantasy-football-api)
+    """
+  end
+
+  defp package do
+    [
+      name: :ffnerd,
+      maintainers: ["Jesse J. Anderson"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/jessejanderson/ffnerd-api-elixir"}
     ]
   end
 end
