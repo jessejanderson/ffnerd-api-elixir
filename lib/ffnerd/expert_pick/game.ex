@@ -51,8 +51,8 @@ defmodule FFNerd.ExpertPick.Game do
   def list(client) do
     {:games, %FFNerd.URL{service: "nfl-picks"}}
     |> FFNerd.get(client)
-    |> Enum.map( fn{k, v} -> new(v, k) end)
-    |> Enum.map( fn(x) ->
+    |> Enum.map(fn{k, v} -> new(v, k) end)
+    |> Enum.map(fn(x) ->
          Map.get_and_update(x, :picks, fn(current_val) ->
            {current_val, Enum.map(current_val, &FFNerd.ExpertPick.new/1)}
          end) |> elem(1)
