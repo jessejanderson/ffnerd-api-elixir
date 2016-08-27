@@ -22,6 +22,10 @@ defmodule FFNerd.PlayerTest do
     assert %FFNerd.Player{player_id: "2"} = find(2, @client)
   end
 
+  test "Return a single player record by display name." do
+    assert %FFNerd.Player{display_name: "Russell Wilson"} = find("Russell Wilson", @client)
+  end
+
   test "Return the display name from a player record." do
     player = find(2, @client)
     assert "Derek Anderson" = player.display_name

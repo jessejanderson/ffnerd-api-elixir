@@ -44,7 +44,19 @@ defmodule FFNerd.Player do
     FFNerd.Player.find 2, client
 
   """
-  def find(id, client) do
+  def find(id, client) when is_integer(id) do
     client |> list |> Enum.find(&(&1.player_id == "#{id}"))
+  end
+
+  @doc """
+  Return a single player record by display name.
+
+  ## Examples
+
+    FFNerd.Player.find "Russell Wilson", client
+
+  """
+  def find(name, client) do
+    client |> list |> Enum.find(&(&1.display_name == name))
   end
 end

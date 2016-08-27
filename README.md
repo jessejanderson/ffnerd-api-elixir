@@ -107,6 +107,13 @@ Return a single player record by player id.
 
 ```elixir
 player = FFNerd.Player.find(1, client)
+# %FFNerd.Player{player_id: "1"}
+```
+
+Return a single player record by display name.
+
+```elixir
+player = FFNerd.Player.find("Russell Wilson", client)
 # %FFNerd.Player{...}
 
 player.active         # "1"
