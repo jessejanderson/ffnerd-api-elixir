@@ -5,8 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.5">
-    <title>FFNerd.Game – ffnerd v0.0.1</title>
+    <title>FFNerd.Game – ffnerd v0.1.0</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
+    
+      <link rel="canonical" href="https://hexdocs.pm/ffnerd/FFNerd.Game.html" />
     
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -28,7 +30,7 @@
         ffnerd
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.0.1
+        v0.1.0
       </h2>
     </div>
     
@@ -60,7 +62,7 @@
 
 
       <h1>
-        <small class="visible-xs">ffnerd v0.0.1</small>
+        <small class="visible-xs">ffnerd v0.1.0</small>
         FFNerd.Game
         
         
@@ -109,8 +111,11 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#new/2">new(map_or_kwlist, opts \\ [])</a>
+    <a href="#new/1">new(map)</a>
   </div>
+  
+    <div class="summary-synopsis"><p>Convert raw api data to Game struct</p>
+</div>
   
 </div>
 
@@ -166,26 +171,18 @@
 
   </section>
 </div>
-<div class="detail" id="new/2">
+<div class="detail" id="new/1">
   <div class="detail-header">
-    <a href="#new/2" class="detail-link" title="Link to this function">
+    <a href="#new/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">new(map_or_kwlist, opts \\ [])</span>
+    <span class="signature">new(map)</span>
       
   </div>
   
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
-        
-          <pre><code class="elixir">new(ExConstructor.map_or_kwlist, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) :: %FFNerd.Game{away_team: term, game_date: term, game_id: term, game_time_et: term, game_week: term, home_team: term, tv_station: term}</code></pre>
-        
-      </div>
-    </div>
-  
   <section class="docstring">
-    
+    <p>Convert raw api data to Game struct.</p>
+
   </section>
 </div>
 

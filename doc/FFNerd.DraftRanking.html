@@ -5,10 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.5">
-    <title>FFNerd.ByeWeek – ffnerd v0.1.0</title>
+    <title>FFNerd.DraftRanking – ffnerd v0.1.0</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     
-      <link rel="canonical" href="https://hexdocs.pm/ffnerd/FFNerd.ByeWeek.html" />
+      <link rel="canonical" href="https://hexdocs.pm/ffnerd/FFNerd.DraftRanking.html" />
     
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -63,15 +63,15 @@
 
       <h1>
         <small class="visible-xs">ffnerd v0.1.0</small>
-        FFNerd.ByeWeek
+        FFNerd.DraftRanking
         
         
       </h1>
 
       
         <section id="moduledoc" class="docstring">
-          <p>Provides functions to work with Fantasy Football Nerd’s Bye Week resources.</p>
-<p>More info at: <a href="http://www.fantasyfootballnerd.com/fantasy-football-api#byes">http://www.fantasyfootballnerd.com/fantasy-football-api#byes</a></p>
+          <p>Provides functions to work with Fantasy Football Nerd’s Draft Ranking resources.</p>
+<p>More info at: <a href="http://www.fantasyfootballnerd.com/fantasy-football-api#draft-rankings">http://www.fantasyfootballnerd.com/fantasy-football-api#draft-rankings</a></p>
 
         </section>
       
@@ -93,11 +93,17 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#find/2">find(team, client)</a>
+    <a href="#find/2">find(id, client)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Return a single bye week record by team code</p>
+    <div class="summary-synopsis"><p>Return a single draft ranking record by person id</p>
 </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#find/3">find(atom, id, client)</a>
+  </div>
   
 </div>
 <div class="summary-row">
@@ -105,17 +111,23 @@
     <a href="#list/1">list(client)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Return a list of all bye week records</p>
+    <div class="summary-synopsis"><p>Return a list of draft ranking records</p>
 </div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#list/2">list(id, client)</a>
+    <a href="#list/2">list(position, client)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Return a list of bye week records by week number</p>
+    <div class="summary-synopsis"><p>Return a list of draft ranking records by position</p>
 </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list/3">list(atom, position, client)</a>
+  </div>
   
 </div>
 <div class="summary-row">
@@ -150,15 +162,29 @@
     <a href="#find/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">find(team, client)</span>
+    <span class="signature">find(id, client)</span>
       
   </div>
   
   <section class="docstring">
-    <p>Return a single bye week record by team code.</p>
+    <p>Return a single draft ranking record by person id.</p>
 <h2>Examples</h2>
-<p>  FFNerd.ByeWeek.find “SEA”, client</p>
+<p>  FFNerd.DraftRanking.find 259, client</p>
+<p>  FFNerd.DraftRanking.find :ppr, 259, client</p>
 
+  </section>
+</div>
+<div class="detail" id="find/3">
+  <div class="detail-header">
+    <a href="#find/3" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">find(atom, id, client)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
   </section>
 </div>
 <div class="detail" id="list/1">
@@ -171,9 +197,10 @@
   </div>
   
   <section class="docstring">
-    <p>Return a list of all bye week records.</p>
+    <p>Return a list of draft ranking records.</p>
 <h2>Examples</h2>
-<p>  FFNerd.ByeWeek.list 4, client</p>
+<p>  FFNerd.DraftRanking.list client</p>
+<p>  FFNerd.DraftRanking.list :ppr, client</p>
 
   </section>
 </div>
@@ -182,15 +209,29 @@
     <a href="#list/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">list(id, client)</span>
+    <span class="signature">list(position, client)</span>
       
   </div>
   
   <section class="docstring">
-    <p>Return a list of bye week records by week number.</p>
+    <p>Return a list of draft ranking records by position.</p>
 <h2>Examples</h2>
-<p>  FFNerd.ByeWeek.list 4, client</p>
+<p>  FFNerd.DraftRanking.list “QB”, client</p>
+<p>  FFNerd.DraftRanking.list :ppr, “QB”, client</p>
 
+  </section>
+</div>
+<div class="detail" id="list/3">
+  <div class="detail-header">
+    <a href="#list/3" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">list(atom, position, client)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
   </section>
 </div>
 <div class="detail" id="new/2">
@@ -206,7 +247,7 @@
       <h4 class="specs-title">Specs</h4>
       <div class="specs-list">
         
-          <pre><code class="elixir">new(ExConstructor.map_or_kwlist, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) :: %FFNerd.ByeWeek{bye_week: term, display_name: term, team: term}</code></pre>
+          <pre><code class="elixir">new(ExConstructor.map_or_kwlist, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) :: %FFNerd.DraftRanking{bye_week: term, display_name: term, fname: term, lname: term, nerd_rank: term, overall_rank: term, player_id: term, position: term, position_rank: term, ppr: term, team: term}</code></pre>
         
       </div>
     </div>
