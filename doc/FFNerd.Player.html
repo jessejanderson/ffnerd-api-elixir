@@ -8,8 +8,6 @@
     <title>FFNerd.Player – ffnerd v0.1.0</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     
-      <link rel="canonical" href="https://hexdocs.pm/ffnerd/FFNerd.Player.html" />
-    
     <script src="dist/sidebar_items.js"></script>
   </head>
   <body data-type="modules">
@@ -96,7 +94,7 @@
     <a href="#find/2">find(id, client)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Return a single player record by player id</p>
+    <div class="summary-synopsis"><p>Return a single player record by player id or display name</p>
 </div>
   
 </div>
@@ -155,9 +153,10 @@
   </div>
   
   <section class="docstring">
-    <p>Return a single player record by player id.</p>
+    <p>Return a single player record by player id or display name</p>
 <h2>Examples</h2>
-<p>  FFNerd.Player.find 2, client</p>
+<p>  FFNerd.Player.find 2, client
+  FFNerd.Player.find “Russell Wilson”, client</p>
 
   </section>
 </div>
