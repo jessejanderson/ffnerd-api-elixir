@@ -19,7 +19,7 @@ defmodule FFNerd do
   end
 
   def process_url(url) do
-    "http://www.fantasyfootballnerd.com/service/" <> url
+    "https://www.fantasyfootballnerd.com/service/" <> url
   end
 
   def process_response_body(body) do
