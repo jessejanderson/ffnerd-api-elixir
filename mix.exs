@@ -3,13 +3,13 @@ defmodule FFNerd.Mixfile do
 
   def project do
     [app: :ffnerd,
-     version: "0.2.0",
-     elixir: "~> 1.2",
+     version: "0.2.1",
+     elixir: "~> 1.5",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      description: description(),
      package: package(),
-     deps: deps]
+     deps: deps()]
   end
 
   def application do
@@ -18,15 +18,15 @@ defmodule FFNerd.Mixfile do
 
   defp deps do
     [
-      {:credo, "~> 0.3", only: [:dev, :test]},
-      {:earmark, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.11", only: :dev},
-      {:exconstructor, "~> 1.0.2"},
-      {:exvcr, "~> 0.6", only: :test},
-      {:httpoison, "~> 0.8.0"},
-      {:meck, "~> 0.8", only: :test},
-      {:mix_test_watch, "~> 0.2", only: :dev},
-      {:poison, "~> 2.0"},
+      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:earmark, "~> 1.2.2", only: :dev},
+      {:ex_doc, "~> 0.16", only: :dev, runtime: false},
+      {:exconstructor, "~> 1.1.0"},
+      {:exvcr, "~> 0.8", only: :test},
+      {:httpoison, "~> 0.13"},
+      {:meck, "~> 0.8.4", only: :test},
+      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
+      {:poison, "~> 3.1"},
     ]
   end
 

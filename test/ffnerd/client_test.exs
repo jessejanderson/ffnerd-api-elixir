@@ -6,7 +6,7 @@ defmodule FFNerd.ClientTest do
 
   test "default endpoint" do
     client = new("")
-    assert client.endpoint == "http://www.fantasyfootballnerd.com"
+    assert client.endpoint == "https://www.fantasyfootballnerd.com"
   end
 
   test "custom endpoint" do
