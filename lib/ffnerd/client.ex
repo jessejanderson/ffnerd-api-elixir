@@ -1,5 +1,5 @@
 defmodule FFNerd.Client do
-  defstruct auth: nil, endpoint: "http://www.fantasyfootballnerd.com"
+  defstruct auth: nil, endpoint: "https://www.fantasyfootballnerd.com"
 
   @doc """
   Create new client with default endpoint.
