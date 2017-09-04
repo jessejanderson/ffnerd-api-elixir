@@ -1,25 +1,25 @@
     <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.11.5">
-    <title>FFNerd.Inactive – ffnerd v0.2.0</title>
-    <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
+    <meta name="generator" content="ExDoc v0.16.3">
+    <title>FFNerd.Inactive – ffnerd v0.2.1</title>
+    <link rel="stylesheet" href="dist/app-5b9e160cec.css" />
     
-    <script src="dist/sidebar_items.js"></script>
+    <script src="dist/sidebar_items-6b1fe30cb7.js"></script>
+    
   </head>
   <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
 
     <div class="main">
 <button class="sidebar-toggle">
-  <i class="icon-menu"></i>
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
 </button>
 <section class="sidebar">
-  <button class="sidebar-toggle">
-    <i class="icon-menu"></i>
-  </button>
 
   
   <a href="api-reference.html" class="sidebar-projectLink">
@@ -28,16 +28,18 @@
         ffnerd
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.2.0
+        v0.2.1
       </h2>
     </div>
     
   </a>
 
-  <div class="sidebar-search">
-    <i class="icon-search"></i>
-    <input type="text" class="sidebar-searchInput" placeholder="search" autocomplete="off" />
-  </div>
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
@@ -49,27 +51,28 @@
     
 
     
-  </ul>
 
+    
+  </ul>
+  <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
-  <div class="sidebar-noResults"></div>
 </section>
 
 <section class="content">
-  <div id="content" class="content-inner">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
 
 
       <h1>
-        <small class="visible-xs">ffnerd v0.2.0</small>
+        <small class="visible-xs">ffnerd v0.2.1</small>
         FFNerd.Inactive
-        
         
       </h1>
 
       
-        <section id="moduledoc" class="docstring">
+        <section id="moduledoc">
           <p>Provides functions to work with Fantasy Football Nerd’s Inactives resources.</p>
-<p>More info at: <a href="http://www.fantasyfootballnerd.com/fantasy-football-api#inactives">http://www.fantasyfootballnerd.com/fantasy-football-api#inactives</a></p>
+<p>More info at: http://www.fantasyfootballnerd.com/fantasy-football-api#inactives</p>
 
         </section>
       
@@ -78,7 +81,8 @@
         <section id="summary" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#summary">
-              <i class="icon-link"></i>
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
             </a>
             Summary
           </h1>
@@ -137,8 +141,6 @@
 
           
 
-          
-
         </section>
       
 
@@ -148,92 +150,128 @@
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
-              <i class="icon-link"></i>
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
             </a>
             Functions
           </h1>
           <div class="detail" id="find/2">
+  
+  
   <div class="detail-header">
     <a href="#find/2" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">find(id, client)</span>
-      
+    
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Return an inactive record by player id.</p>
-<h2>Examples</h2>
+<h2 id="find/2-examples" class="section-heading">
+  <a href="#find/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
 <p>  FFNerd.Inactive.find 1465, client</p>
 
   </section>
 </div>
 <div class="detail" id="find/3">
+  
+  
   <div class="detail-header">
     <a href="#find/3" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">find(id, week, client)</span>
-      
+    
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Return an inactive record by player id and week.</p>
-<h2>Examples</h2>
+<h2 id="find/3-examples" class="section-heading">
+  <a href="#find/3-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
 <p>  FFNerd.Inactive.find 259, 17, client</p>
 
   </section>
 </div>
 <div class="detail" id="list/1">
+  
+  
   <div class="detail-header">
     <a href="#list/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">list(client)</span>
-      
+    
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Return a list of inactive records.</p>
-<h2>Examples</h2>
+<h2 id="list/1-examples" class="section-heading">
+  <a href="#list/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
 <p>  FFNerd.Inactive.list client</p>
 
   </section>
 </div>
 <div class="detail" id="list/2">
+  
+  
   <div class="detail-header">
     <a href="#list/2" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">list(week, client)</span>
-      
+    
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Return a list of inactive records by week.</p>
-<h2>Examples</h2>
+<h2 id="list/2-examples" class="section-heading">
+  <a href="#list/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
 <p>  FFNerd.Inactive.list 17, client</p>
 
   </section>
 </div>
 <div class="detail" id="new/2">
+  
+  
+    <span id="new/1"></span>
+  
   <div class="detail-header">
     <a href="#new/2" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">new(map_or_kwlist, opts \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">new(ExConstructor.map_or_kwlist, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) :: %FFNerd.Inactive{display_name: term, player_id: term, position: term, team: term, week: term, year: term}</code></pre>
+          <pre>new(<a href="https://hexdocs.pm/exconstructor/1.1.0/ExConstructor.html#t:map_or_kwlist/0">ExConstructor.map_or_kwlist</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) :: %FFNerd.Inactive{display_name: term, player_id: term, position: term, team: term, week: term, year: term}</pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     
   </section>
@@ -243,25 +281,25 @@
       
 
       
-
-      
-        <footer class="footer">
-      <p>
-        <span class="line">
-          Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.5),
-        </span>
-        <span class="line">
-          designed by
-          <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.16.3),
           </span>
-      </p>
-      <button class="night-mode-toggle" />
-    </footer>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-918614602f.js"></script>
+  <script src="dist/app-da04b39d0c.js"></script>
+  
   </body>
 </html>
 
