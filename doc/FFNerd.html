@@ -1,25 +1,25 @@
     <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.11.5">
-    <title>FFNerd – ffnerd v0.2.0</title>
-    <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
+    <meta name="generator" content="ExDoc v0.16.3">
+    <title>FFNerd – ffnerd v0.2.1</title>
+    <link rel="stylesheet" href="dist/app-5b9e160cec.css" />
     
-    <script src="dist/sidebar_items.js"></script>
+    <script src="dist/sidebar_items-6b1fe30cb7.js"></script>
+    
   </head>
   <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
 
     <div class="main">
 <button class="sidebar-toggle">
-  <i class="icon-menu"></i>
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
 </button>
 <section class="sidebar">
-  <button class="sidebar-toggle">
-    <i class="icon-menu"></i>
-  </button>
 
   
   <a href="api-reference.html" class="sidebar-projectLink">
@@ -28,16 +28,18 @@
         ffnerd
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.2.0
+        v0.2.1
       </h2>
     </div>
     
   </a>
 
-  <div class="sidebar-search">
-    <i class="icon-search"></i>
-    <input type="text" class="sidebar-searchInput" placeholder="search" autocomplete="off" />
-  </div>
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
@@ -49,20 +51,21 @@
     
 
     
-  </ul>
 
+    
+  </ul>
+  <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
-  <div class="sidebar-noResults"></div>
 </section>
 
 <section class="content">
-  <div id="content" class="content-inner">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
 
 
       <h1>
-        <small class="visible-xs">ffnerd v0.2.0</small>
+        <small class="visible-xs">ffnerd v0.2.1</small>
         FFNerd
-        
         
       </h1>
 
@@ -72,7 +75,8 @@
         <section id="summary" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#summary">
-              <i class="icon-link"></i>
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
             </a>
             Summary
           </h1>
@@ -104,7 +108,7 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#build_url/1">build_url(u_r_l)</a>
+    <a href="#build_url/1">build_url(url)</a>
   </div>
   
 </div>
@@ -230,7 +234,43 @@ failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#process_headers/1">process_headers(headers)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_request_body/1">process_request_body(body)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_request_headers/1">process_request_headers(headers)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_request_options/1">process_request_options(options)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#process_response_body/1">process_response_body(body)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_response_chunk/1">process_response_chunk(chunk)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#process_status_code/1">process_status_code(status_code)</a>
   </div>
   
 </div>
@@ -242,7 +282,7 @@ failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#put/4">put(url, body, headers \\ [], options \\ [])</a>
+    <a href="#put/4">put(url, body \\ &quot;&quot;, headers \\ [], options \\ [])</a>
   </div>
   
     <div class="summary-synopsis"><p>Issues a PUT request to the given url</p>
@@ -251,7 +291,7 @@ failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#put!/4">put!(url, body, headers \\ [], options \\ [])</a>
+    <a href="#put!/4">put!(url, body \\ &quot;&quot;, headers \\ [], options \\ [])</a>
   </div>
   
     <div class="summary-synopsis"><p>Issues a PUT request to the given url, raising an exception in case of
@@ -287,11 +327,18 @@ exception in case of failure</p>
 </div>
   
 </div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_next/1">stream_next(resp)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Requests the next message to be streamed for a given <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html"><code class="inline">HTTPoison.AsyncResponse</code></a></p>
+</div>
+  
+</div>
 
   </div>
 
-
-          
 
           
 
@@ -299,26 +346,60 @@ exception in case of failure</p>
       
 
       
-        <section id="types" class="types details-list">
+        <section id="types" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#types">
-              <i class="icon-link"></i>
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
             </a>
             Types
           </h1>
           <div class="types-list">
-            <div id="t:body/0" class="type-detail">
-  <pre><code class="elixir"><a href="#t:body/0">body</a> ::
-  binary |
-  {:form, [{atom, any}]} |
-  {:file, binary}</code></pre>
+            <div class="detail" id="t:body/0">
   
+  
+  <div class="detail-header">
+    <a href="#t:body/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">body()</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>body() :: <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Base.html#t:body/0">HTTPoison.Base.body</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
 </div>
-<div id="t:headers/0" class="type-detail">
-  <pre><code class="elixir"><a href="#t:headers/0">headers</a> ::
-  [{binary, binary}] |
-  %{optional(binary) => binary}</code></pre>
+<div class="detail" id="t:headers/0">
   
+  
+  <div class="detail-header">
+    <a href="#t:headers/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">headers()</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>headers() :: <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Base.html#t:headers/0">HTTPoison.Base.headers</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
 </div>
 
           </div>
@@ -329,43 +410,53 @@ exception in case of failure</p>
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
-              <i class="icon-link"></i>
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
             </a>
             Functions
           </h1>
           <div class="detail" id="build_url/1">
+  
+  
   <div class="detail-header">
     <a href="#build_url/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">build_url(u_r_l)</span>
-      
+    <span class="signature">build_url(url)</span>
+    
+    
+    
   </div>
-  
   <section class="docstring">
     
   </section>
 </div>
 <div class="detail" id="delete/3">
+  
+  
+    <span id="delete/1"></span>
+  
+    <span id="delete/2"></span>
+  
   <div class="detail-header">
     <a href="#delete/3" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">delete(url, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">delete(binary, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-  {:error, HTTPoison.Error.t}</code></pre>
+          <pre>delete(binary, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  {:ok, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> | <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>} |
+  {:error, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Error.html#t:t/0">HTTPoison.Error.t</a>}</pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a DELETE request to the given url.</p>
 <p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
@@ -375,25 +466,30 @@ otherwise.</p>
   </section>
 </div>
 <div class="detail" id="delete!/3">
+  
+  
+    <span id="delete!/1"></span>
+  
+    <span id="delete!/2"></span>
+  
   <div class="detail-header">
     <a href="#delete!/3" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">delete!(url, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">delete!(binary, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  HTTPoison.Response.t |
-  HTTPoison.AsyncResponse.t</code></pre>
+          <pre>delete!(binary, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> |
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a></pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a DELETE request to the given url, raising an exception in case of
 failure.</p>
@@ -403,38 +499,47 @@ failure.</p>
   </section>
 </div>
 <div class="detail" id="get/2">
+  
+  
   <div class="detail-header">
     <a href="#get/2" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get(arg, client)</span>
-      
+    
+    
+    
   </div>
-  
   <section class="docstring">
     
   </section>
 </div>
 <div class="detail" id="get/3">
+  
+  
+    <span id="get/1"></span>
+  
+    <span id="get/2"></span>
+  
   <div class="detail-header">
     <a href="#get/3" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get(url, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">get(binary, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-  {:error, HTTPoison.Error.t}</code></pre>
+          <pre>get(binary, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  {:ok, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> | <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>} |
+  {:error, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Error.html#t:t/0">HTTPoison.Error.t</a>}</pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a GET request to the given url.</p>
 <p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
@@ -444,25 +549,30 @@ otherwise.</p>
   </section>
 </div>
 <div class="detail" id="get!/3">
+  
+  
+    <span id="get!/1"></span>
+  
+    <span id="get!/2"></span>
+  
   <div class="detail-header">
     <a href="#get!/3" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get!(url, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">get!(binary, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  HTTPoison.Response.t |
-  HTTPoison.AsyncResponse.t</code></pre>
+          <pre>get!(binary, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> |
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a></pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a GET request to the given url, raising an exception in case of
 failure.</p>
@@ -472,25 +582,30 @@ failure.</p>
   </section>
 </div>
 <div class="detail" id="head/3">
+  
+  
+    <span id="head/1"></span>
+  
+    <span id="head/2"></span>
+  
   <div class="detail-header">
     <a href="#head/3" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">head(url, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">head(binary, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-  {:error, HTTPoison.Error.t}</code></pre>
+          <pre>head(binary, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  {:ok, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> | <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>} |
+  {:error, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Error.html#t:t/0">HTTPoison.Error.t</a>}</pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a HEAD request to the given url.</p>
 <p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
@@ -500,25 +615,30 @@ otherwise.</p>
   </section>
 </div>
 <div class="detail" id="head!/3">
+  
+  
+    <span id="head!/1"></span>
+  
+    <span id="head!/2"></span>
+  
   <div class="detail-header">
     <a href="#head!/3" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">head!(url, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">head!(binary, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  HTTPoison.Response.t |
-  HTTPoison.AsyncResponse.t</code></pre>
+          <pre>head!(binary, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> |
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a></pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a HEAD request to the given url, raising an exception in case of
 failure.</p>
@@ -528,25 +648,30 @@ failure.</p>
   </section>
 </div>
 <div class="detail" id="options/3">
+  
+  
+    <span id="options/1"></span>
+  
+    <span id="options/2"></span>
+  
   <div class="detail-header">
     <a href="#options/3" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">options(url, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">options(binary, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-  {:error, HTTPoison.Error.t}</code></pre>
+          <pre>options(binary, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  {:ok, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> | <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>} |
+  {:error, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Error.html#t:t/0">HTTPoison.Error.t</a>}</pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues an OPTIONS request to the given url.</p>
 <p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
@@ -556,25 +681,30 @@ otherwise.</p>
   </section>
 </div>
 <div class="detail" id="options!/3">
+  
+  
+    <span id="options!/1"></span>
+  
+    <span id="options!/2"></span>
+  
   <div class="detail-header">
     <a href="#options!/3" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">options!(url, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">options!(binary, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  HTTPoison.Response.t |
-  HTTPoison.AsyncResponse.t</code></pre>
+          <pre>options!(binary, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> |
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a></pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a OPTIONS request to the given url, raising an exception in case of
 failure.</p>
@@ -584,25 +714,30 @@ failure.</p>
   </section>
 </div>
 <div class="detail" id="patch/4">
+  
+  
+    <span id="patch/2"></span>
+  
+    <span id="patch/3"></span>
+  
   <div class="detail-header">
     <a href="#patch/4" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">patch(url, body, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">patch(binary, <a href="#t:body/0">body</a>, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-  {:error, HTTPoison.Error.t}</code></pre>
+          <pre>patch(binary, any, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  {:ok, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> | <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>} |
+  {:error, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Error.html#t:t/0">HTTPoison.Error.t</a>}</pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a PATCH request to the given url.</p>
 <p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
@@ -612,25 +747,30 @@ otherwise.</p>
   </section>
 </div>
 <div class="detail" id="patch!/4">
+  
+  
+    <span id="patch!/2"></span>
+  
+    <span id="patch!/3"></span>
+  
   <div class="detail-header">
     <a href="#patch!/4" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">patch!(url, body, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">patch!(binary, <a href="#t:body/0">body</a>, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  HTTPoison.Response.t |
-  HTTPoison.AsyncResponse.t</code></pre>
+          <pre>patch!(binary, any, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> |
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a></pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a PATCH request to the given url, raising an exception in case of
 failure.</p>
@@ -640,25 +780,30 @@ failure.</p>
   </section>
 </div>
 <div class="detail" id="post/4">
+  
+  
+    <span id="post/2"></span>
+  
+    <span id="post/3"></span>
+  
   <div class="detail-header">
     <a href="#post/4" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">post(url, body, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">post(binary, <a href="#t:body/0">body</a>, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-  {:error, HTTPoison.Error.t}</code></pre>
+          <pre>post(binary, any, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  {:ok, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> | <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>} |
+  {:error, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Error.html#t:t/0">HTTPoison.Error.t</a>}</pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a POST request to the given url.</p>
 <p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
@@ -668,25 +813,30 @@ otherwise.</p>
   </section>
 </div>
 <div class="detail" id="post!/4">
+  
+  
+    <span id="post!/2"></span>
+  
+    <span id="post!/3"></span>
+  
   <div class="detail-header">
     <a href="#post!/4" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">post!(url, body, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">post!(binary, <a href="#t:body/0">body</a>, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  HTTPoison.Response.t |
-  HTTPoison.AsyncResponse.t</code></pre>
+          <pre>post!(binary, any, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> |
+  <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a></pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a POST request to the given url, raising an exception in case of
 failure.</p>
@@ -695,52 +845,187 @@ failure.</p>
 
   </section>
 </div>
+<div class="detail" id="process_headers/1">
+  
+  
+  <div class="detail-header">
+    <a href="#process_headers/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">process_headers(headers)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="process_request_body/1">
+  
+  
+  <div class="detail-header">
+    <a href="#process_request_body/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">process_request_body(body)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>process_request_body(any) :: <a href="#t:body/0">body</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="process_request_headers/1">
+  
+  
+  <div class="detail-header">
+    <a href="#process_request_headers/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">process_request_headers(headers)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>process_request_headers(<a href="#t:headers/0">headers</a>) :: <a href="#t:headers/0">headers</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="process_request_options/1">
+  
+  
+  <div class="detail-header">
+    <a href="#process_request_options/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">process_request_options(options)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
 <div class="detail" id="process_response_body/1">
+  
+  
   <div class="detail-header">
     <a href="#process_response_body/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">process_response_body(body)</span>
-      
+    
+    
+    
+      <div class="specs">
+        
+          <pre>process_response_body(binary) :: any</pre>
+        
+      </div>
+    
   </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="process_response_chunk/1">
   
+  
+  <div class="detail-header">
+    <a href="#process_response_chunk/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">process_response_chunk(chunk)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="process_status_code/1">
+  
+  
+  <div class="detail-header">
+    <a href="#process_status_code/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">process_status_code(status_code)</span>
+    
+    
+    
+  </div>
   <section class="docstring">
     
   </section>
 </div>
 <div class="detail" id="process_url/1">
+  
+  
   <div class="detail-header">
     <a href="#process_url/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">process_url(url)</span>
-      
+    
+    
+    
   </div>
-  
   <section class="docstring">
     
   </section>
 </div>
 <div class="detail" id="put/4">
+  
+  
+    <span id="put/1"></span>
+  
+    <span id="put/2"></span>
+  
+    <span id="put/3"></span>
+  
   <div class="detail-header">
     <a href="#put/4" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">put(url, body, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    <span class="signature">put(url, body \\ &quot;&quot;, headers \\ [], options \\ [])</span>
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">put(binary, <a href="#t:body/0">body</a>, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-  {:error, HTTPoison.Error.t}</code></pre>
+          <pre>put(binary, any, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  {:ok, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> | <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>} |
+  {:error, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Error.html#t:t/0">HTTPoison.Error.t</a>}</pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues a PUT request to the given url.</p>
 <p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
@@ -750,25 +1035,24 @@ otherwise.</p>
   </section>
 </div>
 <div class="detail" id="put!/4">
+  
+  
+    <span id="put!/1"></span>
+  
+    <span id="put!/2"></span>
+  
+    <span id="put!/3"></span>
+  
   <div class="detail-header">
     <a href="#put!/4" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">put!(url, body, headers \\ [], options \\ [])</span>
-      
+    <span class="signature">put!(url, body \\ &quot;&quot;, headers \\ [], options \\ [])</span>
+    
+    
+    
   </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
-        
-          <pre><code class="elixir">put!(binary, <a href="#t:body/0">body</a>, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  HTTPoison.Response.t |
-  HTTPoison.AsyncResponse.t</code></pre>
-        
-      </div>
-    </div>
-  
   <section class="docstring">
     <p>Issues a PUT request to the given url, raising an exception in case of
 failure.</p>
@@ -778,25 +1062,32 @@ failure.</p>
   </section>
 </div>
 <div class="detail" id="request/5">
+  
+  
+    <span id="request/2"></span>
+  
+    <span id="request/3"></span>
+  
+    <span id="request/4"></span>
+  
   <div class="detail-header">
     <a href="#request/5" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">request(method, url, body \\ &quot;&quot;, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">request(atom, binary, <a href="#t:body/0">body</a>, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
-  {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} |
-  {:error, HTTPoison.Error.t}</code></pre>
+          <pre>request(atom, binary, any, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) ::
+  {:ok, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a> | <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>} |
+  {:error, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Error.html#t:t/0">HTTPoison.Error.t</a>}</pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues an HTTP request with the given method to the given url.</p>
 <p>This function is usually used indirectly by <a href="#get/3"><code class="inline">get/3</code></a>, <a href="#post/4"><code class="inline">post/4</code></a>, <a href="#put/4"><code class="inline">put/4</code></a>, etc</p>
@@ -822,6 +1113,8 @@ failure.</p>
 </li>
 <li><code class="inline">{:file, &quot;/path/to/file&quot;}</code> - send a file
 </li>
+<li><code class="inline">{:stream, enumerable}</code> - lazily send a stream of binaries/charlists
+</li>
 </ul>
 <p>Options:</p>
 <ul>
@@ -831,8 +1124,10 @@ failure.</p>
 </li>
 <li><code class="inline">:stream_to</code> - a PID to stream the response to
 </li>
+<li><code class="inline">:async</code> - if given <code class="inline">:once</code>, will only stream one message at a time, requires call to <code class="inline">stream_next</code>
+</li>
 <li><code class="inline">:proxy</code> - a proxy to be used for the request; it can be a regular url
-or a <code class="inline">{Host, Proxy}</code> tuple
+or a <code class="inline">{Host, Port}</code> tuple
 </li>
 <li><code class="inline">:proxy_auth</code> - proxy authentication <code class="inline">{User, Password}</code> tuple
 </li>
@@ -848,29 +1143,40 @@ or a <code class="inline">{Host, Proxy}</code> tuple
 <p>Timeouts can be an integer or <code class="inline">:infinity</code></p>
 <p>This function returns <code class="inline">{:ok, response}</code> or <code class="inline">{:ok, async_response}</code> if the
 request is successful, <code class="inline">{:error, reason}</code> otherwise.</p>
-<h2>Examples</h2>
+<h2 id="request/5-examples" class="section-heading">
+  <a href="#request/5-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
 <pre><code class="elixir">request(:post, &quot;https://my.website.com&quot;, &quot;{\&quot;foo\&quot;: 3}&quot;, [{&quot;Accept&quot;, &quot;application/json&quot;}])</code></pre>
 
   </section>
 </div>
 <div class="detail" id="request!/5">
+  
+  
+    <span id="request!/2"></span>
+  
+    <span id="request!/3"></span>
+  
+    <span id="request!/4"></span>
+  
   <div class="detail-header">
     <a href="#request!/5" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">request!(method, url, body \\ &quot;&quot;, headers \\ [], options \\ [])</span>
-      
-  </div>
-  
-    <div class="specs">
-      <h4 class="specs-title">Specs</h4>
-      <div class="specs-list">
+    
+    
+    
+      <div class="specs">
         
-          <pre><code class="elixir">request!(atom, binary, <a href="#t:body/0">body</a>, <a href="#t:headers/0">headers</a>, <a href="http://elixir-lang.org/docs/stable/elixir/Keyword.html#t:t/0">Keyword.t</a>) :: HTTPoison.Response.t</code></pre>
+          <pre>request!(atom, binary, any, <a href="#t:headers/0">headers</a>, <a href="https://hexdocs.pm/elixir/Keyword.html#t:t/0">Keyword.t</a>) :: <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Response.html#t:t/0">HTTPoison.Response.t</a></pre>
         
       </div>
-    </div>
-  
+    
+  </div>
   <section class="docstring">
     <p>Issues an HTTP request with the given method to the given url, raising an
 exception in case of failure.</p>
@@ -881,16 +1187,47 @@ request fails.</p>
   </section>
 </div>
 <div class="detail" id="start/0">
+  
+  
   <div class="detail-header">
     <a href="#start/0" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">start()</span>
-      
+    
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Starts HTTPoison and its dependencies.</p>
+
+  </section>
+</div>
+<div class="detail" id="stream_next/1">
+  
+  
+  <div class="detail-header">
+    <a href="#stream_next/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">stream_next(resp)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>stream_next(<a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>) ::
+  {:ok, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html#t:t/0">HTTPoison.AsyncResponse.t</a>} |
+  {:error, <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.Error.html#t:t/0">HTTPoison.Error.t</a>}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Requests the next message to be streamed for a given <a href="https://hexdocs.pm/httpoison/0.13.0/HTTPoison.AsyncResponse.html"><code class="inline">HTTPoison.AsyncResponse</code></a>.</p>
+<p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
 
   </section>
 </div>
@@ -899,25 +1236,25 @@ request fails.</p>
       
 
       
-
-      
-        <footer class="footer">
-      <p>
-        <span class="line">
-          Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.5),
-        </span>
-        <span class="line">
-          designed by
-          <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.16.3),
           </span>
-      </p>
-      <button class="night-mode-toggle" />
-    </footer>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-918614602f.js"></script>
+  <script src="dist/app-da04b39d0c.js"></script>
+  
   </body>
 </html>
 
